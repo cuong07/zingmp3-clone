@@ -11,7 +11,6 @@ const Home = (props) => {
     useEffect(() => {
         const fetchDataHome = async () => {
             const response = await apis.getHome();
-            console.log(response);
             if (response) {
                 dispatch(homeSlice.actions.getBanner(response.data.data));
             } else {

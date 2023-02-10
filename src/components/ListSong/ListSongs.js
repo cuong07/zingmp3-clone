@@ -10,7 +10,6 @@ const { BsDot } = icons;
 
 const ListSongs = ({ totalDuration }) => {
     const songData = useSelector((state) => state.music.songs);
-    console.log(songData);
 
     let durationHour = moment.utc(totalDuration * 1000).format("HH");
     let durationMinute = moment.utc(totalDuration * 1000).format("mm");

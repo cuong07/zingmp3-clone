@@ -16,7 +16,6 @@ const Album = () => {
     useEffect(() => {
         const fetchDetailPlaylist = async () => {
             const response = await apis.apiGetDetailPlaylist(playlistid);
-            console.log(response);
             if (response.data.err === 0) {
                 dispatch(musicSlide.actions.setSongs(response?.data?.data));
             }

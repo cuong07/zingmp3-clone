@@ -44,7 +44,6 @@ const Player = () => {
             ]);
             if (songResponse?.data.err === 0) {
                 audio.pause();
-                console.log(songResponse?.data?.data);
                 setAudio(new Audio(songResponse?.data?.data["128"]));
             }
             if (detailResponse?.data.err === 0) {
@@ -102,7 +101,7 @@ const Player = () => {
         dispatch(musicSlide.actions.setIsPlaying(true));
     };
 
-    const handlerNextSong = () => {};
+    const handlerNextSong = () => { };
 
     return (
         <div className="bg-main-400 px-5 h-full flex">
@@ -139,9 +138,8 @@ const Player = () => {
                         <CiShuffle size={18} />
                     </span>
                     <span
-                        className={`${
-                            atAlbum ? "cursor-pointer" : "cursor-none"
-                        }`}
+                        className={`${atAlbum ? "cursor-pointer" : "cursor-none"
+                            }`}
                     >
                         <IoMdSkipBackward size={18} />
                     </span>
