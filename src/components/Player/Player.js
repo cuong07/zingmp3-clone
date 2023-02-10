@@ -6,6 +6,7 @@ import icons from "../../ultis/icon";
 import mp3logo from "../../assets/mp3logo.svg";
 import moment from "moment";
 import { toast } from "react-toast";
+import Loading from "../../../src/UI/Loading"
 
 const {
     AiFillHeart,
@@ -22,7 +23,7 @@ const {
 var intervalId;
 
 const Player = () => {
-    const { curSongId, isPlaying, atAlbum } = useSelector(
+    const { curSongId, isPlaying, atAlbum, isLoading } = useSelector(
         (state) => state.music
     );
 
@@ -38,10 +39,12 @@ const Player = () => {
 
     useEffect(() => {
         const fetchData = async () => {
+            dispatch(musicSlide.actions.setIsLoading(true))
             const [songResponse, detailResponse] = await Promise.all([
                 apis.apiGetSong(curSongId),
                 apis.apiGetDetailSong(curSongId),
             ]);
+            dispatch(musicSlide.actions.setIsLoading(false))
             if (songResponse?.data.err === 0) {
                 audio.pause();
                 setAudio(new Audio(songResponse?.data?.data["128"]));
@@ -143,13 +146,17 @@ const Player = () => {
                     >
                         <IoMdSkipBackward size={18} />
                     </span>
-                    <span
-                        className="cursor-pointer p-[6px] border border-gray-700 hover:text-main-500 rounded-full"
-                        onClick={handlerTogglePlayMusic}
-                    >
-                        {!isPlaying && <FaPlay size={26} />}
-                        {isPlaying && <FaPause size={26} />}
-                    </span>
+                    {isLoading && <Loading />}
+                    {!isLoading &&
+                        <span
+                            className="cursor-pointer p-[6px] border border-gray-700 hover:text-main-500 rounded-full"
+                            onClick={handlerTogglePlayMusic}
+                        >
+                            {!isPlaying && <FaPlay size={26} />}
+                            {isPlaying && <FaPause size={26} />}
+                        </span>
+                    }
+
                     <span className="cursor-pointer" onClick={handlerNextSong}>
                         <IoMdSkipForward size={18} />
                     </span>

@@ -5,6 +5,7 @@ const initialState = {
     isPlaying: false,
     atAlbum: false,
     songs: [],
+    isLoading: false,
 };
 const musicSlide = createSlice({
     name: "music",
@@ -22,6 +23,9 @@ const musicSlide = createSlice({
         setSongs: (state, aciton) => {
             state.songs = aciton.payload;
         },
+        setIsLoading: (state, aciton) => {
+            state.isLoading = aciton.payload;
+        }
     },
 });
 

@@ -53,12 +53,21 @@ module.exports = {
             '-webkit-transform': 'translateX(0);',
             transform: 'translateX(0);'
           }
+        },
+        'rotate': {
+          '0%': {
+            transform: 'rotate(0);',
+          },
+          '100%': {
+            transform: 'rotate(360deg);'
+          }
         }
       },
       animation: {
         'slide-right': 'slide-right 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;',
         'slide-left': 'slide-left 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;',
         'slide-left2': 'slide-left2 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;',
+        'loading': 'rotate 1s linear infinite;',
       },
       flex: {
         '4': '4 4 0'
