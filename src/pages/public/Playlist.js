@@ -6,7 +6,6 @@ import * as apis from "../../apis";
 import moment from "moment";
 import ListSongs from "../../components/ListSong/ListSongs";
 
-
 const Playlist = () => {
     const { title, playlistid } = useParams();
     const [playlistSong, setPlaylistSong] = useState([]);

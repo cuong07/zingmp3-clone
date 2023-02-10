@@ -16,17 +16,15 @@ const Public = (props) => {
         <div className="w-full h-screen flex flex-col relative bg-main-300">
             <div className="w-full h-full flex flex-auto mb-[90px]">
                 <div
-                    className={`1200:w-[240px] w-[70px] flex-none ${
-                        scroll ? "sticky top-1" : ""
-                    }`}
+                    className={`1200:w-[240px] w-[70px] flex-none ${scroll ? "sticky top-1" : ""
+                        }`}
                 >
                     <SidebarLeft />
                 </div>
-                <div className="flex-auto  ">
+                <div className="flex-auto">
                     <div
-                        className={`h-[70px] px-[59px] flex items-center mb-5 max-640:hidden ${
-                            scroll ? "shadow-sm fixed bg-main-400 w-full" : ""
-                        }`}
+                        className={`h-[70px] px-[59px] flex items-center mb-5 max-640:hidden ${scroll ? "shadow-sm fixed bg-main-400 w-full" : ""
+                            }`}
                     >
                         <Header />
                     </div>

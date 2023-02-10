@@ -9,8 +9,7 @@ import { useSelector } from "react-redux";
 const { BsDot } = icons;
 
 const ListSongs = ({ totalDuration }) => {
-
-    const songData = useSelector((state) => state.music)
+    const songData = useSelector((state) => state.music.songs);
     console.log(songData);
 
     let durationHour = moment.utc(totalDuration * 1000).format("HH");
@@ -23,12 +22,12 @@ const ListSongs = ({ totalDuration }) => {
                 <span>Thời gian</span>
             </div>
             <div className="flex flex-col">
-                {songData?.map((item) => (
+                {songData?.song.items.map((item) => (
                     <ListSong key={item.encodeId} songData={item} />
                 ))}
             </div>
             <div className="flex items-center border border-t-gray-300 py-[10px]">
-                <span>{`${songData?.length} bài hát`}</span>
+                <span>{`${songData?.song.items.length} bài hát`}</span>
                 <BsDot size={24} />
                 <span>{`${durationHour} giờ ${durationMinute} phút`}</span>
             </div>

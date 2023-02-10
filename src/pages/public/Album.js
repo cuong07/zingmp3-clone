@@ -7,19 +7,18 @@ import Scrollbars from "react-custom-scrollbars-2";
 import { useDispatch, useSelector } from "react-redux";
 import musicSlide from "../../store/musicSlice";
 
-
 const Album = () => {
     const { title, playlistid } = useParams();
 
     const dispatch = useDispatch();
-    const playlistData = useSelector((state) => state.music.songs)
+    const playlistData = useSelector((state) => state.music.songs);
 
     useEffect(() => {
         const fetchDetailPlaylist = async () => {
             const response = await apis.apiGetDetailPlaylist(playlistid);
             console.log(response);
             if (response.data.err === 0) {
-                dispatch(musicSlide.actions.setSongs(response?.data?.data))
+                dispatch(musicSlide.actions.setSongs(response?.data?.data));
             }
         };
         fetchDetailPlaylist();

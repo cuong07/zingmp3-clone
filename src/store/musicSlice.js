@@ -21,8 +21,7 @@ const musicSlide = createSlice({
         },
         setSongs: (state, aciton) => {
             state.songs = aciton.payload;
-        }
-
+        },
     },
 });
 

@@ -7,7 +7,6 @@ import mp3logo from "../../assets/mp3logo.svg";
 import moment from "moment";
 import { toast } from "react-toast";
 
-
 const {
     AiFillHeart,
     AiOutlineHeart,
@@ -23,7 +22,9 @@ const {
 var intervalId;
 
 const Player = () => {
-    const { curSongId, isPlaying, atAlbum } = useSelector((state) => state.music);
+    const { curSongId, isPlaying, atAlbum } = useSelector(
+        (state) => state.music
+    );
 
     const [duration, setDuration] = useState(0);
     const [timeCur, setTimeCur] = useState(0);
@@ -39,7 +40,7 @@ const Player = () => {
         const fetchData = async () => {
             const [songResponse, detailResponse] = await Promise.all([
                 apis.apiGetSong(curSongId),
-                apis.apiGetDetailSong(curSongId)
+                apis.apiGetDetailSong(curSongId),
             ]);
             if (songResponse?.data.err === 0) {
                 audio.pause();
@@ -50,14 +51,13 @@ const Player = () => {
                 setSongInfo(detailResponse?.data.data);
                 setDuration(detailResponse?.data.data.duration);
             } else {
-                setAudio(new Audio())
+                setAudio(new Audio());
                 dispatch(musicSlide.actions.setIsPlaying(false));
-                toast.warn(songResponse.data.msg)
+                toast.warn(songResponse.data.msg);
             }
         };
         fetchData();
     }, [curSongId]);
-
 
     useEffect(() => {
         intervalId && clearInterval(intervalId);
@@ -72,7 +72,7 @@ const Player = () => {
                 setTimeCur(Math.round(audio.currentTime));
             }, 200);
             if (timeCur === duration) {
-                setTimeCur(0)
+                setTimeCur(0);
             }
         }
     }, [audio, isPlaying]);
@@ -92,16 +92,17 @@ const Player = () => {
 
     const handlerClickProgressbar = (e) => {
         const trackRect = trackRef.current.getBoundingClientRect();
-        const percent = Math.round((e.clientX - trackRect.left) * 10000 / trackRect.width) / 100;
+        const percent =
+            Math.round(
+                ((e.clientX - trackRect.left) * 10000) / trackRect.width
+            ) / 100;
         thumbRef.current.style.cssText = `right: ${100 - percent}%`;
-        audio.currentTime = percent * duration / 100;
-        setTimeCur(Math.round(percent * duration / 100))
-        dispatch(musicSlide.actions.setIsPlaying(true))
-    }
+        audio.currentTime = (percent * duration) / 100;
+        setTimeCur(Math.round((percent * duration) / 100));
+        dispatch(musicSlide.actions.setIsPlaying(true));
+    };
 
-    const handlerNextSong = () => {
-
-    }
+    const handlerNextSong = () => {};
 
     return (
         <div className="bg-main-400 px-5 h-full flex">
@@ -137,7 +138,11 @@ const Player = () => {
                     >
                         <CiShuffle size={18} />
                     </span>
-                    <span className={`${atAlbum ? 'cursor-pointer' : 'cursor-none'}`}  >
+                    <span
+                        className={`${
+                            atAlbum ? "cursor-pointer" : "cursor-none"
+                        }`}
+                    >
                         <IoMdSkipBackward size={18} />
                     </span>
                     <span
@@ -169,11 +174,7 @@ const Player = () => {
                             className="absolute h-full left-0 top-0 bg-main-500 rounded-full"
                         ></div>
                     </div>
-                    <span>
-                        {moment
-                            .utc(duration * 1000)
-                            .format("mm:ss")}
-                    </span>
+                    <span>{moment.utc(duration * 1000).format("mm:ss")}</span>
                 </div>
             </div>
             <div className="w-[30%] flex-auto border border-red-500 "></div>

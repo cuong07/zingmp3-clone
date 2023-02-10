@@ -13,7 +13,7 @@ const ListSong = ({ songData }) => {
     const getSongIdHandler = (songId) => {
         dispatch(musicSlide.actions.setCurSongId(songId));
         dispatch(musicSlide.actions.setIsPlaying(true));
-        dispatch(musicSlide.actions.setAtAlbum(true))
+        dispatch(musicSlide.actions.setAtAlbum(true));
     };
     const durationSong = moment.utc(songData.duration * 1000).format("mm:ss");
     return (
