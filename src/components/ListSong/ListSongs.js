@@ -14,6 +14,7 @@ const ListSongs = ({ totalDuration }) => {
 
     let durationHour = moment.utc(totalDuration * 1000).format("HH");
     let durationMinute = moment.utc(totalDuration * 1000).format("mm");
+
     return (
         <div className="w-full flex flex-col text-xs text-gray-600 ">
             <div className="flex justify-between items-center font-semibold p-[10px]">
@@ -22,12 +23,12 @@ const ListSongs = ({ totalDuration }) => {
                 <span>Thời gian</span>
             </div>
             <div className="flex flex-col">
-                {songData?.song.items.map((item) => (
+                {songData?.song?.items?.map((item) => (
                     <ListSong key={item.encodeId} songData={item} />
                 ))}
             </div>
             <div className="flex items-center border border-t-gray-300 py-[10px]">
-                <span>{`${songData?.song.items.length} bài hát`}</span>
+                <span>{`${songData?.song?.items?.length} bài hát`}</span>
                 <BsDot size={24} />
                 <span>{`${durationHour} giờ ${durationMinute} phút`}</span>
             </div>
