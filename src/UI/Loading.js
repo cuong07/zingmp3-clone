@@ -1,10 +1,8 @@
-import React from 'react'
-import './Loading.scss'
+import React from "react";
+import "./Loading.scss";
 
 const Loading = () => {
-    return (
-        <div class="loader" />
-    )
-}
+    return <div className="loader" />;
+};
 
-export default Loading
+export default Loading;

@@ -7,7 +7,9 @@ import path from "./ultis/path";
 function App() {
     return (
         <>
-            <div>
+            <div style={{
+                backgroundImage: `url("https://zmp3-static.zmdcdn.me/skins/zmp3-v6.1/images/theme-background/eiffel.jpg")`
+            }}>
                 <Routes>
                     <Route path={path.PUBLIC} element={<Public />}>
                         <Route path={path.HOME} element={<Home />} />

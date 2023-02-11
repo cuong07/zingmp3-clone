@@ -7,7 +7,7 @@ import icons from "../../ultis/icon";
 
 const { GiMusicalNotes } = icons;
 
-const ListSong = ({ songData }) => {
+const ListSong = ({ curIndex, songData }) => {
     const dispatch = useDispatch();
 
     const getSongIdHandler = (songId) => {
@@ -15,6 +15,7 @@ const ListSong = ({ songData }) => {
         dispatch(musicSlide.actions.setIsPlaying(true));
         dispatch(musicSlide.actions.setAtAlbum(true));
     };
+
     const durationSong = moment.utc(songData.duration * 1000).format("mm:ss");
     return (
         <div

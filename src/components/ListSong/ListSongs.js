@@ -22,8 +22,12 @@ const ListSongs = ({ totalDuration }) => {
                 <span>Thời gian</span>
             </div>
             <div className="flex flex-col">
-                {songData?.song?.items?.map((item) => (
-                    <ListSong key={item.encodeId} songData={item} />
+                {songData?.song?.items?.map((item, index) => (
+                    <ListSong
+                        key={item.encodeId}
+                        songData={item}
+                        currIndex={index}
+                    />
                 ))}
             </div>
             <div className="flex items-center border border-t-gray-300 py-[10px]">

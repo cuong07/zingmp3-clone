@@ -6,7 +6,7 @@ import icons from "../../ultis/icon";
 import mp3logo from "../../assets/mp3logo.svg";
 import moment from "moment";
 import { toast } from "react-toast";
-import Loading from "../../../src/UI/Loading"
+import Loading from "../../../src/UI/Loading";
 
 const {
     AiFillHeart,
@@ -23,7 +23,7 @@ const {
 var intervalId;
 
 const Player = () => {
-    const { curSongId, isPlaying, atAlbum, isLoading } = useSelector(
+    const { curSongId, isPlaying, atAlbum, isLoadingSong, songs } = useSelector(
         (state) => state.music
     );
 
@@ -34,24 +34,28 @@ const Player = () => {
     const [isLike, setIsLike] = useState(false);
     const thumbRef = useRef();
     const trackRef = useRef();
+    const play = async () => {
+        await audio.play();
+    };
 
     const dispatch = useDispatch();
 
     useEffect(() => {
         const fetchData = async () => {
-            dispatch(musicSlide.actions.setIsLoading(true))
+            setTimeCur(0);
+            dispatch(musicSlide.actions.setIsLoadingSong(true));
             const [songResponse, detailResponse] = await Promise.all([
                 apis.apiGetSong(curSongId),
                 apis.apiGetDetailSong(curSongId),
             ]);
-            dispatch(musicSlide.actions.setIsLoading(false))
+            dispatch(musicSlide.actions.setIsLoadingSong(false));
             if (songResponse?.data.err === 0) {
                 audio.pause();
                 setAudio(new Audio(songResponse?.data?.data["128"]));
             }
             if (detailResponse?.data.err === 0) {
                 setSongInfo(detailResponse?.data.data);
-                setDuration(detailResponse?.data.data.duration);
+                setDuration(detailResponse?.data?.data?.duration);
             } else {
                 setAudio(new Audio());
                 dispatch(musicSlide.actions.setIsPlaying(false));
@@ -64,11 +68,11 @@ const Player = () => {
     useEffect(() => {
         intervalId && clearInterval(intervalId);
         if (isPlaying) {
-            audio.play();
+            play();
             intervalId = setInterval(() => {
                 let percent =
                     Math.round(
-                        (audio.currentTime * 10000) / songInfo.duration
+                        (audio.currentTime * 10000) / songInfo?.duration
                     ) / 100;
                 thumbRef.current.style.cssText = `right: ${100 - percent}%`;
                 setTimeCur(Math.round(audio.currentTime));
@@ -84,7 +88,7 @@ const Player = () => {
             audio.pause();
             dispatch(musicSlide.actions.setIsPlaying(false));
         } else {
-            audio.play();
+            play();
             dispatch(musicSlide.actions.setIsPlaying(true));
         }
     };
@@ -103,8 +107,7 @@ const Player = () => {
         setTimeCur(Math.round((percent * duration) / 100));
         dispatch(musicSlide.actions.setIsPlaying(true));
     };
-
-    const handlerNextSong = () => { };
+    const handlerNextSong = () => {};
 
     return (
         <div className="bg-main-400 px-5 h-full flex">
@@ -123,11 +126,14 @@ const Player = () => {
                     </span>
                 </div>
                 <div className="flex gap-4 pl-2">
-                    <span onClick={handlerToggleLike}>
+                    <span
+                        onClick={handlerToggleLike}
+                        className="cursor-pointer"
+                    >
                         {isLike && <AiFillHeart size={18} />}
                         {!isLike && <AiOutlineHeart size={18} />}
                     </span>
-                    <span>
+                    <span className="cursor-pointer">
                         <BsThreeDots size={18} />
                     </span>
                 </div>
@@ -135,19 +141,22 @@ const Player = () => {
             <div className="w-[40%] flex-auto items-center justify-center flex flex-col gap-4 py-2 ">
                 <div className="flex gap-8 items-center justify-center">
                     <span
-                        className="cursor-pointer"
+                        className={`${
+                            atAlbum ? "cursor-pointer" : "cursor-none"
+                        }`}
                         title="Bật phát ngẫu nhiên"
                     >
                         <CiShuffle size={18} />
                     </span>
                     <span
-                        className={`${atAlbum ? "cursor-pointer" : "cursor-none"
-                            }`}
+                        className={`${
+                            atAlbum ? "cursor-pointer" : "cursor-none"
+                        }`}
                     >
                         <IoMdSkipBackward size={18} />
                     </span>
-                    {isLoading && <Loading />}
-                    {!isLoading &&
+                    {isLoadingSong && <Loading />}
+                    {!isLoadingSong && (
                         <span
                             className="cursor-pointer p-[6px] border border-gray-700 hover:text-main-500 rounded-full"
                             onClick={handlerTogglePlayMusic}
@@ -155,7 +164,7 @@ const Player = () => {
                             {!isPlaying && <FaPlay size={26} />}
                             {isPlaying && <FaPause size={26} />}
                         </span>
-                    }
+                    )}
 
                     <span className="cursor-pointer" onClick={handlerNextSong}>
                         <IoMdSkipForward size={18} />
