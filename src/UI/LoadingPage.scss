@@ -1,5 +1,5 @@
 .modal {
-    z-index: 1111;
+    z-index: 1111111;
     width: 100vw;
     height: 100vh;
     background: #ccc;
@@ -35,7 +35,7 @@
     -o-transform: rotate(180deg);
     -moz-transform: rotate(180deg);
     -webkit-transform: rotate(180deg);
-    color: #1164ab;
+    color: #fff;
 }
 
 #load div:nth-child(2) {

@@ -23,7 +23,8 @@ module.exports = {
         'main-400': '#C0D8D8',
         'main-500': '#0E8080',
         'main-text-noacctive': '#efe6f2',
-        'main-text-acctive': '#ebedee'
+        'main-text-acctive': '#ebedee',
+        'main-text': 'white',
       },
       keyframes: {
         'slide-right': {

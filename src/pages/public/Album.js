@@ -37,10 +37,10 @@ const Album = () => {
                     alt="thumbnail"
                 />
                 <div className="flex flex-col items-center justify-center">
-                    <h3 className="text-[20px] font-bold text-gray-800">
+                    <h3 className="text-[20px] font-bold text-main-text">
                         {playlistData?.title}
                     </h3>
-                    <span className="text-gray-600 text-[12px] text-center">
+                    <span className="text-[#ffffff80] text-[12px] text-center">
                         {" "}
                         Cập Nhật:
                         <span>
@@ -54,14 +54,14 @@ const Album = () => {
                         {playlistData?.artists?.map((item) => (
                             <span
                                 key={item.id}
-                                className="text-gray-600 text-[12px]"
+                                className="text-[#ffffff80] text-[12px]"
                             >
                                 {item.name} ,
                             </span>
                         ))}
                     </span>
-                    <span className="text-gray-600 text-[12px]">{`${Math.round(
-                        playlistData.like / 1000
+                    <span className="text-[#ffffff80] text-[12px]">{`${Math.round(
+                        playlistData?.like / 1000
                     )}K Lượt yêu thích`}</span>
                 </div>
             </div>
@@ -71,7 +71,7 @@ const Album = () => {
                         <span className="text-[14px] text-[#696969]">
                             Lời tựa
                         </span>
-                        <span className="text-[14px] ">
+                        <span className="text-[14px] text-main-text ">
                             {" "}
                             {playlistData?.sortDescription}
                         </span>

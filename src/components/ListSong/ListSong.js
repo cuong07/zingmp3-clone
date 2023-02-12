@@ -19,7 +19,7 @@ const ListSong = ({ curIndex, songData }) => {
     const durationSong = moment.utc(songData.duration * 1000).format("mm:ss");
     return (
         <div
-            className="flex justify-between items-center p-[10px] border border-t-gray-300 hover:bg-main-200 cursor-pointer"
+            className="flex justify-between items-center p-[10px] border-t-2 border-t-[#868686] hover:bg-[#595959] cursor-pointer"
             onClick={() => getSongIdHandler(songData.encodeId)}
         >
             <div className="flex items-center gap-3 flex-1">
@@ -32,19 +32,19 @@ const ListSong = ({ curIndex, songData }) => {
                     className="h-10 w-10 object-cover rounded-md"
                 />
                 <span className="flex flex-col">
-                    <span className="text-sm font-semibold">
+                    <span className="text-sm font-semibold text-main-text">
                         {" "}
                         {songData?.title.length > 30
                             ? `${songData?.title.slice(0, 50)}...`
                             : songData?.title}
                     </span>
-                    <span>{songData?.artistsNames}</span>
+                    <span className="text-[#696969">{songData?.artistsNames}</span>
                 </span>
             </div>
-            <div className="flex-1 flex justify-center items-center">
+            <div className="flex-1 flex justify-center items-center text-main-text">
                 {songData?.album?.title}
             </div>
-            <div className="flex-1 flex justify-end items-center ">
+            <div className="flex-1 flex justify-end items-center text-main-text ">
                 {durationSong}
             </div>
         </div>

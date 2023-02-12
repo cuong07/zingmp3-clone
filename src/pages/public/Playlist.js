@@ -29,55 +29,57 @@ const Playlist = () => {
     let responseDate = moment(songs?.contentLastUpdate).format("DD/MM/YYYY");
 
     let PlaylistContent = (
-        <div className="flex w-full h-full gap-8 p-[59px]">
-            <div className="flex-none flex w-1/5 flex-col items-center gap-2 ">
-                <img
-                    className="w-full object-contain rounded-md shadow-md"
-                    src={songs?.thumbnailM}
-                    alt="thumbnail"
-                />
-                <div className="flex flex-col items-center justify-center">
-                    <h3 className="text-[20px] font-bold text-gray-800">
-                        {songs?.title}
-                    </h3>
-                    <span className="text-gray-600 text-[12px] text-center">
-                        {" "}
-                        Cập Nhật:
-                        <span> {responseDate}</span>
-                    </span>
-                    <span className="text-center">
-                        {songs?.artists?.map((item) => (
-                            <span
-                                key={item.id}
-                                className="text-gray-600 text-[12px]"
-                            >
-                                {item.name} ,
-                            </span>
-                        ))}
-                    </span>
-                    <span className="text-gray-600 text-[12px]">{`${Math.round(
-                        songs.like / 1000
-                    )}K Lượt yêu thích`}</span>
-                </div>
-            </div>
-            <Scrollbars className="w-full h-[80%]">
-                <div className="flex-auto overflow-y-auto mb-11 ">
-                    <span>
-                        <span className="text-[14px] text-[#696969]">
-                            Lời tựa
-                        </span>
-                        <span className="text-[14px] ">
-                            {" "}
-                            {songs?.sortDescription}
-                        </span>
-                    </span>
-                    <ListSongs
-                        songData={songs?.song?.items}
-                        totalDuration={songs?.song?.totalDuration}
+        <Scrollbars className="w-full">
+            <div className="flex w-full h-full gap-8 p-[59px]">
+                <div className="flex-none flex w-1/5 flex-col items-center gap-2 ">
+                    <img
+                        className="w-full object-contain rounded-md shadow-md"
+                        src={songs?.thumbnailM}
+                        alt="thumbnail"
                     />
+                    <div className="flex flex-col items-center justify-center">
+                        <h3 className="text-[20px] font-bold text-main-text">
+                            {songs?.title}
+                        </h3>
+                        <span className="text-main-text text-[12px] text-center">
+                            {" "}
+                            Cập Nhật:
+                            <span> {responseDate}</span>
+                        </span>
+                        <span className="text-center">
+                            {songs?.artists?.map((item) => (
+                                <span
+                                    key={item.id}
+                                    className="text-main-text text-[12px]"
+                                >
+                                    {item.name} ,
+                                </span>
+                            ))}
+                        </span>
+                        <span className="text-main-text text-[12px]">{`${Math.round(
+                            songs?.like / 1000
+                        )}K Lượt yêu thích`}</span>
+                    </div>
                 </div>
-            </Scrollbars>
-        </div>
+                <Scrollbars className="w-full h-[80%]">
+                    <div className="flex-auto overflow-y-auto mb-11 ">
+                        <span>
+                            <span className="text-[14px] text-[#696969]">
+                                Lời tựa
+                            </span>
+                            <span className="text-[14px]  text-main-text ">
+                                {" "}
+                                {songs?.sortDescription}
+                            </span>
+                        </span>
+                        <ListSongs
+                            songData={songs?.song?.items}
+                            totalDuration={songs?.song?.totalDuration}
+                        />
+                    </div>
+                </Scrollbars>
+            </div>
+        </Scrollbars>
     );
     return (
         <>

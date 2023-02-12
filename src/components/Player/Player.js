@@ -23,7 +23,7 @@ const {
 var intervalId;
 
 const Player = () => {
-    const { curSongId, isPlaying, atAlbum, isLoadingSong, songs } = useSelector(
+    const { curSongId, isPlaying, isLoadingSong, songs } = useSelector(
         (state) => state.music
     );
 
@@ -32,6 +32,7 @@ const Player = () => {
     const [audio, setAudio] = useState(new Audio());
     const [songInfo, setSongInfo] = useState(null);
     const [isLike, setIsLike] = useState(false);
+    const [isRand, setIsRand] = useState(false)
     const thumbRef = useRef();
     const trackRef = useRef();
     const play = async () => {
@@ -59,7 +60,7 @@ const Player = () => {
             } else {
                 setAudio(new Audio());
                 dispatch(musicSlide.actions.setIsPlaying(false));
-                toast.warn(songResponse.data.msg);
+                toast.warn(songResponse?.data?.msg);
             }
         };
         fetchData();
@@ -107,7 +108,42 @@ const Player = () => {
         setTimeCur(Math.round((percent * duration) / 100));
         dispatch(musicSlide.actions.setIsPlaying(true));
     };
-    const handlerNextSong = () => {};
+    const handlerRandSong = () => {
+        if (songs) {
+            let min = Math.ceil(0);
+            let max = Math.floor(songs?.song?.items.length);
+            let handlerCurSongIndex = Math.floor(Math.random() * (max - min) + min);
+            dispatch(musicSlide.actions.setCurSongId(songs?.song?.items[handlerCurSongIndex].encodeId))
+        }
+    };
+
+    const handlerNextSong = () => {
+        if (songs) {
+            if (isRand) {
+                handlerRandSong()
+            } else {
+                let handlerCurSongIndex = songs?.song?.items?.findIndex(item => curSongId === item.encodeId);
+                dispatch(musicSlide.actions.setCurSongId(songs?.song?.items[handlerCurSongIndex + 1]?.encodeId))
+            }
+
+        }
+    };
+    const handlerPrevSong = () => {
+        if (songs) {
+            if (isRand) {
+                handlerRandSong()
+            } else {
+                let handlerCurSongIndex = songs?.song?.items?.findIndex(item => curSongId === item.encodeId);
+                dispatch(musicSlide.actions.setCurSongId(songs?.song?.items[handlerCurSongIndex - 1].encodeId))
+            }
+        };
+    }
+
+    audio.onended = () => {
+        handlerNextSong();
+    }
+
+
 
     return (
         <div className="bg-main-400 px-5 h-full flex">
@@ -141,30 +177,33 @@ const Player = () => {
             <div className="w-[40%] flex-auto items-center justify-center flex flex-col gap-4 py-2 ">
                 <div className="flex gap-8 items-center justify-center">
                     <span
-                        className={`${
-                            atAlbum ? "cursor-pointer" : "cursor-none"
-                        }`}
+                        className={`${songs ? "cursor-pointer" : "cursor-none"} ${isRand ? "text-red-500" : ""
+                            }`}
                         title="Bật phát ngẫu nhiên"
+                        onClick={() => { setIsRand(!isRand) }}
+
                     >
                         <CiShuffle size={18} />
                     </span>
                     <span
-                        className={`${
-                            atAlbum ? "cursor-pointer" : "cursor-none"
-                        }`}
+                        className={`${songs ? "cursor-pointer" : "cursor-none"
+                            }`}
+                        onClick={handlerPrevSong}
                     >
                         <IoMdSkipBackward size={18} />
                     </span>
-                    {isLoadingSong && <Loading />}
-                    {!isLoadingSong && (
-                        <span
-                            className="cursor-pointer p-[6px] border border-gray-700 hover:text-main-500 rounded-full"
-                            onClick={handlerTogglePlayMusic}
-                        >
-                            {!isPlaying && <FaPlay size={26} />}
-                            {isPlaying && <FaPause size={26} />}
-                        </span>
-                    )}
+                    <span
+                        className="cursor-pointer p-[6px] border border-gray-700 hover:text-main-500 rounded-full"
+                        onClick={handlerTogglePlayMusic}
+                    >
+                        {isLoadingSong && <Loading />}
+                        {!isLoadingSong &&
+                            <span>
+                                {!isPlaying && <FaPlay size={26} />}
+                                {isPlaying && <FaPause size={26} />}
+                            </span>
+                        }
+                    </span>
 
                     <span className="cursor-pointer" onClick={handlerNextSong}>
                         <IoMdSkipForward size={18} />

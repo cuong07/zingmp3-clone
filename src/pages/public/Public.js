@@ -25,17 +25,17 @@ const Public = (props) => {
                     <SidebarLeft />
                 </div>
                 <div className="flex-auto">
-                    <div
-                        className={`h-[70px] px-[59px] flex items-center mb-5 max-640:hidden ${scroll ? "shadow-sm fixed w-full" : ""
-                            }`}
-                    >
-                        <Header />
-                    </div>
-                    <Scrollbars className="w-full">
+                    <Scrollbars className="w-full min-w-[900px]">
+                        <div
+                            className={`h-[70px] px-[59px] flex items-center mb-5 max-640:hidden glass z-50 ${scroll ? "shadow-sm w-full float-left" : ""
+                                }`}
+                        >
+                            <Header />
+                        </div>
                         <Outlet />
                     </Scrollbars>
                 </div>
-                <div className="w-[329px] hidden 438:flex flex-non animate-slide-left max-1600:absolute right-0 z-40 bottom-0 top-0 md:hidden ">
+                <div className="w-[329px] hidden 438:flex flex-non animate-slide-left max-1600:absolute right-0 z-40 bottom-0 top-0 md:hidden  glass">
                     <SidebarRight />
                 </div>
             </div>

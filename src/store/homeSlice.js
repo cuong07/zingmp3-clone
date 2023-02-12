@@ -5,6 +5,7 @@ const homeSlice = createSlice({
     initialState: {
         banner: [],
         isLoadingPage: false,
+        playlist: {}
     },
     reducers: {
         getBanner: (state, action) => {
@@ -15,6 +16,12 @@ const homeSlice = createSlice({
         setIsLoadingPage: (state, action) => {
             state.isLoadingPage = action.payload;
         },
+        getPlaylist: (state, action) => {
+            state.playlist = action.payload.items.find(
+                item => item?.sectionId === "hAutoTheme1" || null
+            )
+                ;
+        }
     },
 });
 
