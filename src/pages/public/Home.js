@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
-import ReactDOM from 'react-dom'
+import ReactDOM from "react-dom";
 import { useDispatch, useSelector } from "react-redux";
 
-import { Section, Slider } from "../../components";
+import { NewRelease, Section, Slider, ArtistTheme, Top100 } from "../../components";
 import * as apis from "../../apis/home";
 import homeSlice from "../../store/homeSlice";
 import LoadingPage from "../../UI/LoadingPage";
@@ -15,10 +15,12 @@ const Home = (props) => {
         const fetchDataHome = async () => {
             dispatch(homeSlice.actions.setIsLoadingPage(true));
             const response = await apis.getHome();
-
             if (response) {
                 dispatch(homeSlice.actions.getBanner(response.data.data));
                 dispatch(homeSlice.actions.getPlaylist(response.data.data));
+                dispatch(homeSlice.actions.getNewRelease(response.data.data));
+                dispatch(homeSlice.actions.getArtistTheme(response.data.data));
+                dispatch(homeSlice.actions.getTop100(response.data.data));
             } else {
                 console.log(Error);
             }
@@ -28,15 +30,21 @@ const Home = (props) => {
     }, []);
 
     return (
-        <div className="overflow-y-auto w-full">
-            {isLoadingPage && ReactDOM.createPortal(<LoadingPage />, document.getElementById('loading'))}
-            {!isLoadingPage &&
+        <div className="w-full">
+            {isLoadingPage &&
+                ReactDOM.createPortal(
+                    <LoadingPage />,
+                    document.getElementById("loading")
+                )}
+            {!isLoadingPage && (
                 <>
                     <Slider />
                     <Section />
+                    <ArtistTheme />
+                    <NewRelease />
+                    <Top100 />
                 </>
-            }
-
+            )}
         </div>
     );
 };

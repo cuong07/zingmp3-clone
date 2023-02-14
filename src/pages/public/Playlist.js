@@ -9,11 +9,16 @@ import { useDispatch, useSelector } from "react-redux";
 import musicSlide from "../../store/musicSlice";
 import LoadingPage from "../../UI/LoadingPage";
 import homeSlice from "../../store/homeSlice";
+import { AudioLoader } from "../../components";
+
+import icons from "../../ultis/icon";
 
 const Playlist = () => {
-    const songs = useSelector((state) => state.music.songs);
+    const { songs, isPlaying } = useSelector((state) => state.music);
     const { isLoadingPage } = useSelector((state) => state.home);
     const { title, playlistid } = useParams();
+
+    const { FaPlay } = icons;
 
     const dispatch = useDispatch();
 
@@ -30,13 +35,35 @@ const Playlist = () => {
 
     let PlaylistContent = (
         <Scrollbars className="w-full">
-            <div className="flex w-full h-full gap-8 p-[59px]">
-                <div className="flex-none flex w-1/5 flex-col items-center gap-2 ">
-                    <img
-                        className="w-full object-contain rounded-md shadow-md"
-                        src={songs?.thumbnailM}
-                        alt="thumbnail"
-                    />
+            <div className="flex max-640:flex-col w-full h-full gap-8 p-[59px]">
+                <div className="flex-none flex w-1/5 flex-col items-center gap-2 max-640:flex-row max-640:w-auto ">
+                    <div className="w-full relative overflow-hidden">
+                        <img
+                            className={`w-full object-contain rounded-md transition-all ease-in-out delay-2000 ${
+                                isPlaying
+                                    ? "animate-rotate-center rounded-full"
+                                    : "animate-rotate-center-pause"
+                            }`}
+                            src={songs?.thumbnailM}
+                            alt="thumbnail"
+                        />
+                        <div
+                            className={`absolute left-0 top-0 w-full h-full hover:bg-overlay-30 flex items-center justify-center ${
+                                isPlaying && "rounded-full"
+                            }`}
+                        >
+                            {isPlaying && (
+                                <span className="w-full flex justify-center">
+                                    <AudioLoader />
+                                </span>
+                            )}
+                            {!isPlaying && (
+                                <span className="p-3 rounded-full border border-white text-white ">
+                                    <FaPlay />
+                                </span>
+                            )}
+                        </div>
+                    </div>
                     <div className="flex flex-col items-center justify-center">
                         <h3 className="text-[20px] font-bold text-main-text">
                             {songs?.title}

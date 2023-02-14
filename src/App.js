@@ -1,4 +1,3 @@
-import { toast, ToastContainer } from "react-toastify";
 import { Routes, Route } from "react-router-dom";
 
 import { Login, Home, Public, Personal, Album, Playlist } from "./pages/public";
@@ -7,9 +6,11 @@ import path from "./ultis/path";
 function App() {
     return (
         <>
-            <div style={{
-                backgroundImage: `url("https://zmp3-static.zmdcdn.me/skins/zmp3-v6.1/images/theme-background/eiffel.jpg")`
-            }}>
+            <div
+                style={{
+                    backgroundImage: `url("https://zmp3-static.zmdcdn.me/skins/zmp3-v6.1/images/theme-background/eiffel.jpg")`,
+                }}
+            >
                 <Routes>
                     <Route path={path.PUBLIC} element={<Public />}>
                         <Route path={path.HOME} element={<Home />} />
@@ -28,19 +29,6 @@ function App() {
                     </Route>
                 </Routes>
             </div>
-            <h1>Hello</h1>
-            <ToastContainer
-                position="top-right"
-                autoClose={5000}
-                hideProgressBar={false}
-                newestOnTop={false}
-                closeOnClick
-                rtl={false}
-                pauseOnFocusLoss
-                draggable
-                pauseOnHover
-                theme="light"
-            />
         </>
     );
 }

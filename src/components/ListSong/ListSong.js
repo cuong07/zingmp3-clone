@@ -38,7 +38,9 @@ const ListSong = ({ curIndex, songData }) => {
                             ? `${songData?.title.slice(0, 50)}...`
                             : songData?.title}
                     </span>
-                    <span className="text-[#696969">{songData?.artistsNames}</span>
+                    <span className="text-[#696969">
+                        {songData?.artistsNames}
+                    </span>
                 </span>
             </div>
             <div className="flex-1 flex justify-center items-center text-main-text">

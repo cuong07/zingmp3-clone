@@ -6,7 +6,6 @@ import mp3logo from "../../assets/mp3logo.svg";
 import path from "../../ultis/path";
 import { sidebarMenu } from "../../ultis/menu";
 
-
 const notActiveStyle =
     "py-2 px-[25px] font-bold flex items-center gap-4 text-inherit text-[13px] h-[50px] ";
 const activeStyle =

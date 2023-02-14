@@ -15,7 +15,7 @@ const ListSongs = ({ totalDuration }) => {
     let durationMinute = moment.utc(totalDuration * 1000).format("mm");
 
     return (
-        <div className="w-full flex flex-col text-xs text-main-text ">
+        <div className="w-full flex flex-col text-xs text-main-text min-w-min ">
             <div className="flex justify-between items-center font-semibold p-[10px]">
                 <span>Bai hát</span>
                 <span>Album</span>

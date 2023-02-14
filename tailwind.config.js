@@ -14,7 +14,9 @@ module.exports = {
         'main-200': '#DDE4E4',
         'main-300': '#f9dbdb',
         'main-400': '#f9dbdb',
-        'main-500': '#0E8080'
+        'main-500': '#0E8080',
+        'overlay-30': 'rgba(0,0,0,0.3)',
+        'main-player': '#181818'
       },
       colors: {
         'main-100': '#E7ECEC',
@@ -26,6 +28,7 @@ module.exports = {
         'main-text-acctive': '#ebedee',
         'main-text': 'white',
       },
+
       keyframes: {
         'slide-right': {
           '0%': {
@@ -57,20 +60,30 @@ module.exports = {
             transform: 'translateX(0);'
           }
         },
-        'rotate': {
+        'rotate-center': {
           '0%': {
             transform: 'rotate(0);',
           },
           '100%': {
             transform: 'rotate(360deg);'
           }
-        }
+        },
+        'rotate-center-pause': {
+          '0%': {
+            transform: 'rotate(360deg);',
+            'border-radius': '9999px',
+          },
+          '100%': {
+            transform: 'rotate(0);'
+          }
+        },
       },
       animation: {
         'slide-right': 'slide-right 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;',
         'slide-left': 'slide-left 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;',
         'slide-left2': 'slide-left2 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;',
-        'loading': 'rotate 1s linear infinite;',
+        'rotate-center': 'rotate-center 6s linear infinite;',
+        'rotate-center-pause': 'rotate-center-pause 0.2s linear 1;',
       },
       flex: {
         '4': '4 4 0'

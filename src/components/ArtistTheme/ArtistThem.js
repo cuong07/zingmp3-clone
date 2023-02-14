@@ -1,26 +1,26 @@
-import React from "react";
-import { memo } from "react";
-import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import React from 'react'
+import { memo } from 'react';
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
-const Section = () => {
-    const playlist = useSelector((state) => state.home.playlist);
+const ArtistThem = () => {
+
+    const artistTheme = useSelector((state) => state.home.artistTheme);
+    console.log(artistTheme);
 
     const navigate = useNavigate();
 
     const handleClickPlaylist = (item) => {
-        if (item?.subType === 1) {
-            const albumPath = item?.link?.split(".")[0];
-            navigate(albumPath);
-        }
+        const albumPath = item?.link?.split(".")[0];
+        navigate(albumPath);
     };
 
-    let songsPlaylist = playlist?.items?.slice(0, 5);
+    let artist = artistTheme?.items?.slice(0, 5);
     return (
         <div className="mt-12 px-[59px] flex flex-col gap-5">
             <div className="flex items-center justify-between ">
                 <h3 className="text-5 font-bold text-main-text capitalize ">
-                    {playlist.title}
+                    {artistTheme.title}
                 </h3>
                 <span
                     className="text-xs uppercase text-main-text cursor-pointer"
@@ -30,7 +30,7 @@ const Section = () => {
                 </span>
             </div>
             <div className="flex justify-between ">
-                {songsPlaylist?.map((item) => (
+                {artist?.map((item) => (
                     <div
                         className="px-[14px] flex-1 flex flex-col gap-1 cursor-pointer "
                         key={item.encodeId}
@@ -51,7 +51,7 @@ const Section = () => {
                 ))}
             </div>
         </div>
-    );
-};
+    )
+}
 
-export default memo(Section);
+export default memo(ArtistThem);

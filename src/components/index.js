@@ -5,3 +5,7 @@ export { default as Slider } from "./Slider/Slider";
 export { default as Player } from "./Player/Player";
 export { default as ListSong } from "./ListSong/ListSong";
 export { default as Section } from "./Section/Section";
+export { default as NewRelease } from "./NewRelease/NewRelease";
+export { default as AudioLoader } from "./AudioLoader/AudioLoader";
+export { default as ArtistTheme } from "./ArtistTheme/ArtistThem";
+export { default as Top100 } from "./Top100/Top100";

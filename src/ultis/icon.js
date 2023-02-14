@@ -8,10 +8,17 @@ import { HiArrowNarrowLeft, HiArrowNarrowRight } from "react-icons/hi";
 import { BiSearch } from "react-icons/bi";
 import { AiTwotoneSetting, AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import { CgProfile } from "react-icons/cg";
-import { BsThreeDots, BsDot } from "react-icons/bs";
+import {
+    BsThreeDots,
+    BsDot,
+    BsMic,
+    BsFillVolumeUpFill,
+    BsFillVolumeOffFill,
+    BsMusicNoteList,
+} from "react-icons/bs";
 import { CiRepeat, CiShuffle } from "react-icons/ci";
 import { IoMdSkipForward, IoMdSkipBackward } from "react-icons/io";
-import { FaPlay, FaPause } from "react-icons/fa";
+import { FaPlay, FaPause, FaRegWindowRestore } from "react-icons/fa";
 import { GiMusicalNotes } from "react-icons/gi";
 import { RiUserAddLine } from "react-icons/ri";
 
@@ -37,6 +44,11 @@ const icons = {
     GiMusicalNotes,
     RiUserAddLine,
     BsDot,
+    BsMic,
+    FaRegWindowRestore,
+    BsFillVolumeUpFill,
+    BsFillVolumeOffFill,
+    BsMusicNoteList,
 };
 
 export default icons;

@@ -5,7 +5,10 @@ const homeSlice = createSlice({
     initialState: {
         banner: [],
         isLoadingPage: false,
-        playlist: {}
+        playlist: {},
+        newRelease: {},
+        artistTheme: {},
+        top100: {},
     },
     reducers: {
         getBanner: (state, action) => {
@@ -18,10 +21,24 @@ const homeSlice = createSlice({
         },
         getPlaylist: (state, action) => {
             state.playlist = action.payload.items.find(
-                item => item?.sectionId === "hAutoTheme1" || null
+                (item) => item?.sectionId === "hAutoTheme1" || null
+            );
+        },
+        getNewRelease: (state, action) => {
+            state.newRelease = action.payload.items.find(
+                (item) => item?.sectionType === "new-release" || null
+            );
+        },
+        getArtistTheme: (state, action) => {
+            state.artistTheme = action.payload.items.find(
+                (item) => item?.sectionId === "hArtistTheme" || null
             )
-                ;
-        }
+        },
+        getTop100: (state, action) => {
+            state.top100 = action.payload.items.find(
+                (item) => item?.sectionId === "h100" || null
+            )
+        },
     },
 });
 
