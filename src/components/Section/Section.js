@@ -3,6 +3,8 @@ import { memo } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
+import SectionItem from "./SectionItem";
+
 const Section = () => {
     const playlist = useSelector((state) => state.home.playlist);
 
@@ -31,23 +33,11 @@ const Section = () => {
             </div>
             <div className="flex justify-between ">
                 {songsPlaylist?.map((item) => (
-                    <div
-                        className="px-[14px] flex-1 flex flex-col gap-1 cursor-pointer "
+                    <SectionItem
                         key={item.encodeId}
-                        onClick={() => handleClickPlaylist(item)}
-                    >
-                        <img
-                            className="rounded-md"
-                            src={item.thumbnailM}
-                            alt="thumbnail"
-                        />
-                        <h4 className="text-[14px] text-main-text">
-                            {item.title}
-                        </h4>
-                        <p className="text-[14px] text-[#ffffff80]">
-                            {item.sortDescription}
-                        </p>
-                    </div>
+                        item={item}
+                        handleClickPlaylist={handleClickPlaylist}
+                    />
                 ))}
             </div>
         </div>

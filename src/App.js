@@ -1,6 +1,14 @@
 import { Routes, Route } from "react-router-dom";
 
-import { Login, Home, Public, Personal, Album, Playlist } from "./pages/public";
+import {
+    Login,
+    Home,
+    Public,
+    Personal,
+    Album,
+    Playlist,
+    WeekRank,
+} from "./pages/public";
 import path from "./ultis/path";
 
 function App() {
@@ -9,6 +17,7 @@ function App() {
             <div
                 style={{
                     backgroundImage: `url("https://zmp3-static.zmdcdn.me/skins/zmp3-v6.1/images/theme-background/eiffel.jpg")`,
+                    backgroundPositionX: 3,
                 }}
             >
                 <Routes>
@@ -23,6 +32,10 @@ function App() {
                         <Route
                             path={path.PLAYLIST_TITTLE__PLAYLISTID}
                             element={<Playlist />}
+                        />
+                        <Route
+                            path={path.PLAYLIST_TITTLE__CHARTID}
+                            element={<WeekRank />}
                         />
 
                         <Route path={path.START} element={<Home />} />

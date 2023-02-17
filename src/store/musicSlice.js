@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
     curSongId: null,
+    detailSongId: null,
     isPlaying: false,
     atAlbum: false,
     songs: null,
@@ -25,6 +26,9 @@ const musicSlide = createSlice({
         },
         setIsLoadingSong: (state, aciton) => {
             state.isLoadingSong = aciton.payload;
+        },
+        getDetailSongId: (state, aciton) => {
+            state.detailSongId = aciton.payload;
         },
     },
 });

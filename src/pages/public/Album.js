@@ -35,18 +35,20 @@ const Album = () => {
     let AlbumContent = (
         <div className="flex w-full h-full gap-8 p-[59px]">
             <div className="flex-none flex w-1/5 flex-col items-center gap-2 ">
-                <div className="w-full relative overflow-hidden">
+                <div className="w-full relative">
                     <img
-                        className={`w-full object-contain rounded-md transition-all ease-in-out delay-2000 ${isPlaying
+                        className={`w-full object-contain rounded-md duration-500 ease-in-out delay-2000 ${
+                            isPlaying
                                 ? "animate-rotate-center rounded-full"
                                 : "animate-rotate-center-pause"
-                            }`}
+                        }`}
                         src={songs?.thumbnailM}
                         alt="thumbnail"
                     />
                     <div
-                        className={`absolute left-0 top-0 w-full h-full hover:bg-overlay-30 flex items-center justify-center ${isPlaying && "rounded-full"
-                            }`}
+                        className={`absolute left-0 top-0 w-full h-full hover:bg-overlay-30 flex items-center justify-center ${
+                            isPlaying && "rounded-full"
+                        }`}
                     >
                         {isPlaying && (
                             <span className="w-full flex justify-center">
@@ -89,7 +91,7 @@ const Album = () => {
                     )}K Lượt yêu thích`}</span>
                 </div>
             </div>
-            <Scrollbars className="w-full h-[80%]">
+            <Scrollbars autoHide className="w-ful bg-transparent">
                 <div className="flex-auto overflow-y-auto mb-11 ">
                     <span>
                         <span className="text-[14px] text-[#696969]">

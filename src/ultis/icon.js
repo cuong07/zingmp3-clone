@@ -15,6 +15,7 @@ import {
     BsFillVolumeUpFill,
     BsFillVolumeOffFill,
     BsMusicNoteList,
+    BsAlarm,
 } from "react-icons/bs";
 import { CiRepeat, CiShuffle } from "react-icons/ci";
 import { IoMdSkipForward, IoMdSkipBackward } from "react-icons/io";
@@ -49,6 +50,7 @@ const icons = {
     BsFillVolumeUpFill,
     BsFillVolumeOffFill,
     BsMusicNoteList,
+    BsAlarm,
 };
 
 export default icons;

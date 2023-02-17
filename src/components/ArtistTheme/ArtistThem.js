@@ -1,12 +1,11 @@
-import React from 'react'
-import { memo } from 'react';
-import { useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import React from "react";
+import { memo } from "react";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import SectionItem from "../Section/SectionItem";
 
 const ArtistThem = () => {
-
     const artistTheme = useSelector((state) => state.home.artistTheme);
-    console.log(artistTheme);
 
     const navigate = useNavigate();
 
@@ -31,27 +30,15 @@ const ArtistThem = () => {
             </div>
             <div className="flex justify-between ">
                 {artist?.map((item) => (
-                    <div
-                        className="px-[14px] flex-1 flex flex-col gap-1 cursor-pointer "
+                    <SectionItem
                         key={item.encodeId}
-                        onClick={() => handleClickPlaylist(item)}
-                    >
-                        <img
-                            className="rounded-md"
-                            src={item.thumbnailM}
-                            alt="thumbnail"
-                        />
-                        <h4 className="text-[14px] text-main-text">
-                            {item.title}
-                        </h4>
-                        <p className="text-[14px] text-[#ffffff80]">
-                            {item.sortDescription}
-                        </p>
-                    </div>
+                        item={item}
+                        handleClickPlaylist={handleClickPlaylist}
+                    />
                 ))}
             </div>
         </div>
-    )
-}
+    );
+};
 
 export default memo(ArtistThem);

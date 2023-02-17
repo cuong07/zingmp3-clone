@@ -46,11 +46,6 @@ const Player = ({ setIsShowSideBarRight, isShowSideBarRight }) => {
     const volumeRef = useRef();
     const dispatch = useDispatch();
 
-    const play = async () => {
-        intervalId && clearInterval(intervalId);
-        await audio.play();
-    };
-
     useEffect(() => {
         intervalId && clearInterval(intervalId);
         setTimeCur(0);
@@ -63,9 +58,18 @@ const Player = ({ setIsShowSideBarRight, isShowSideBarRight }) => {
             dispatch(musicSlide.actions.setIsLoadingSong(false));
             if (songResponse?.data.err === 0) {
                 audio.pause();
-                setAudio(new Audio(songResponse?.data?.data["128"]));
+                if (songResponse?.data?.data["128"]) {
+                    setAudio(new Audio(songResponse?.data?.data["128"]));
+                } else {
+                    handlerNextSong();
+                }
             }
             if (detailResponse?.data.err === 0) {
+                dispatch(
+                    musicSlide.actions.getDetailSongId(
+                        detailResponse?.data.data
+                    )
+                );
                 setSongInfo(detailResponse?.data.data);
                 setDuration(detailResponse?.data?.data?.duration);
             } else {
@@ -94,6 +98,15 @@ const Player = ({ setIsShowSideBarRight, isShowSideBarRight }) => {
             }
         }
     }, [audio, isPlaying]);
+
+    const play = async () => {
+        await audio.play();
+    };
+
+    useEffect(() => {
+        audio.load();
+        if (isPlaying) play();
+    }, [audio]);
 
     const handlerTogglePlayMusic = () => {
         if (isPlaying) {
@@ -189,10 +202,11 @@ const Player = ({ setIsShowSideBarRight, isShowSideBarRight }) => {
                 <img
                     src={songInfo?.thumbnail || mp3logo}
                     alt="Chưa chọn bài hát"
-                    className={`w-16 h-16 object-cover rounded-md ${isPlaying
-                        ? "animate-rotate-center rounded-full"
-                        : "animate-rotate-center-pause"
-                        }`}
+                    className={`w-16 h-16 object-cover rounded-md ${
+                        isPlaying
+                            ? "animate-rotate-center rounded-full"
+                            : "animate-rotate-center-pause"
+                    }`}
                 />
                 <div className="flex flex-col">
                     <span className="font-semibold text-main-text text-sm">
@@ -207,7 +221,7 @@ const Player = ({ setIsShowSideBarRight, isShowSideBarRight }) => {
                         onClick={handlerToggleLike}
                         className="cursor-pointer text-main-text"
                     >
-                        {isLike && <AiFillHeart size={18} />}
+                        {isLike && <AiFillHeart size={18} color="#f44336" />}
                         {!isLike && <AiOutlineHeart size={18} />}
                     </span>
                     <span className="cursor-pointer text-main-text">
@@ -218,8 +232,9 @@ const Player = ({ setIsShowSideBarRight, isShowSideBarRight }) => {
             <div className="w-[40%] flex-auto items-center justify-center flex flex-col gap-4 py-2 ">
                 <div className="flex gap-8 items-center justify-center">
                     <span
-                        className={` text-main-text ${songs ? "cursor-pointer" : "cursor-none"
-                            } ${isRand ? "text-blue-600" : ""}`}
+                        className={` text-main-text ${
+                            songs ? "cursor-pointer" : "cursor-none"
+                        } ${isRand ? "text-blue-600" : ""}`}
                         title="Bật phát ngẫu nhiên"
                         onClick={() => {
                             setIsRand(!isRand);
@@ -228,8 +243,9 @@ const Player = ({ setIsShowSideBarRight, isShowSideBarRight }) => {
                         <CiShuffle size={18} />
                     </span>
                     <span
-                        className={`text-main-text ${songs ? "cursor-pointer" : "cursor-none"
-                            }`}
+                        className={`text-main-text ${
+                            songs ? "cursor-pointer" : "cursor-none"
+                        }`}
                         onClick={handlerPrevSong}
                     >
                         <IoMdSkipBackward size={18} />
@@ -296,7 +312,6 @@ const Player = ({ setIsShowSideBarRight, isShowSideBarRight }) => {
                         ref={volumeRef}
                         type="range"
                         step="1"
-                        value={volume || 50}
                         max="100"
                         min="0"
                         className="bg-[#ccc] slider"

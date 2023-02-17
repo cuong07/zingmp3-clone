@@ -1,3 +1,5 @@
+const plugin = require('tailwindcss/plugin');
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -7,7 +9,8 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        'mp3logo': 'url("https://zjs.zmdcdn.me/zmp3-desktop/releases/v1.8.25/static/media/icon_zing_mp3_60.f6b51045.svg")'
+        'mp3logo': 'url("https://zjs.zmdcdn.me/zmp3-desktop/releases/v1.8.25/static/media/icon_zing_mp3_60.f6b51045.svg")',
+        'gradient-bg-chart': 'linear-gradient(180deg,#740091,#2d1a4c)'
       },
       backgroundColor: {
         'main-100': '#E7ECEC',
@@ -16,7 +19,8 @@ module.exports = {
         'main-400': '#f9dbdb',
         'main-500': '#0E8080',
         'overlay-30': 'rgba(0,0,0,0.3)',
-        'main-player': '#181818'
+        'main-player': '#181818',
+        'gradient-bg-chart': 'linear-gradient(180deg,#740091,#2d1a4c)'
       },
       colors: {
         'main-100': '#E7ECEC',
@@ -28,7 +32,9 @@ module.exports = {
         'main-text-acctive': '#ebedee',
         'main-text': 'white',
       },
-
+      transitionDuration: {
+        'transition-duration-section': '0.5s'
+      },
       keyframes: {
         'slide-right': {
           '0%': {
@@ -63,6 +69,7 @@ module.exports = {
         'rotate-center': {
           '0%': {
             transform: 'rotate(0);',
+            'border-radius': '9999px',
           },
           '100%': {
             transform: 'rotate(360deg);'
@@ -96,5 +103,10 @@ module.exports = {
       '640': '640px'
     }
   },
-  plugins: [],
+  plugins: [
+    require('tailwind-scrollbar'),
+    plugin(function ({ addVariant }) {
+      addVariant('current', '&.active');
+    }),
+  ],
 }

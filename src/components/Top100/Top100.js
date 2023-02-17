@@ -1,12 +1,11 @@
-import React from 'react'
-import { memo } from 'react';
-import { useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import React from "react";
+import { memo } from "react";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import SectionItem from "../Section/SectionItem";
 
 const Top100 = () => {
-
     const top100 = useSelector((state) => state.home.top100);
-    console.log(top100);
 
     const navigate = useNavigate();
 
@@ -31,27 +30,15 @@ const Top100 = () => {
             </div>
             <div className="flex justify-between ">
                 {topSongs?.map((item) => (
-                    <div
-                        className="px-[14px] flex-1 flex flex-col gap-1 cursor-pointer "
+                    <SectionItem
                         key={item.encodeId}
-                        onClick={() => handleClickPlaylist(item)}
-                    >
-                        <img
-                            className="rounded-md"
-                            src={item.thumbnailM}
-                            alt="thumbnail"
-                        />
-                        <h4 className="text-[14px] text-main-text">
-                            {item.title}
-                        </h4>
-                        <p className="text-[14px] text-[#ffffff80]">
-                            {`${item.sortDescription.length > 60 ? item?.sortDescription.slice(0, 60) : item.sortDescription}...`}
-                        </p>
-                    </div>
+                        item={item}
+                        handleClickPlaylist={handleClickPlaylist}
+                    />
                 ))}
             </div>
         </div>
-    )
-}
+    );
+};
 
 export default memo(Top100);
