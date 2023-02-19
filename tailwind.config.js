@@ -10,7 +10,8 @@ module.exports = {
     extend: {
       backgroundImage: {
         'mp3logo': 'url("https://zjs.zmdcdn.me/zmp3-desktop/releases/v1.8.25/static/media/icon_zing_mp3_60.f6b51045.svg")',
-        'gradient-bg-chart': 'linear-gradient(180deg,#740091,#2d1a4c)'
+        'gradient-bg-chart': 'linear-gradient(180deg,#740091,#2d1a4c)',
+        'gradient-bg-vip': 'linear-gradient(117deg,#5a4be7,#c86dd7 102%)'
       },
       backgroundColor: {
         'main-100': '#E7ECEC',
@@ -20,7 +21,6 @@ module.exports = {
         'main-500': '#0E8080',
         'overlay-30': 'rgba(0,0,0,0.3)',
         'main-player': '#181818',
-        'gradient-bg-chart': 'linear-gradient(180deg,#740091,#2d1a4c)'
       },
       colors: {
         'main-100': '#E7ECEC',
@@ -93,7 +93,10 @@ module.exports = {
         'rotate-center-pause': 'rotate-center-pause 0.2s linear 1;',
       },
       flex: {
-        '4': '4 4 0'
+        '4': '4 4 0%',
+        '6': '6 6 0%',
+        '3': '3 3 0%',
+        '7': '7 7 0%',
       }
     },
     screens: {

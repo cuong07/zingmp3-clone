@@ -6,6 +6,7 @@ const Radio = () => {
     const { radio } = useSelector((state) => state.home);
 
     const radioList = radio?.items?.slice(0, 7);
+
     return (
         <div className="px-[59px] mt-12 flex flex-col  gap-5 ">
             <div className="flex justify-between ">
@@ -19,7 +20,7 @@ const Radio = () => {
                     <div className="flex-1 px-[14px] flex-col flex gap-2">
                         <div className="w-full relative text-center">
                             <img
-                                src={item?.program?.thumbnail}
+                                src={item?.host?.thumbnail}
                                 alt="thumbnail"
                                 className="rounded-full border-4 border-red-600"
                             />
@@ -39,8 +40,8 @@ const Radio = () => {
                             <span className="text-xs text-[#ffffff80]">
                                 {item?.activeUsers > 1000
                                     ? ` ${Math.round(
-                                          item?.activeUsers / 1000
-                                      )}K đang nghe`
+                                        item?.activeUsers / 1000
+                                    )}K đang nghe`
                                     : `${item?.activeUsers} đang nghe`}
                             </span>
                         </div>

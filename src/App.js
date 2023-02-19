@@ -8,18 +8,18 @@ import {
     Album,
     Playlist,
     WeekRank,
+    Search,
+    SearchSongs,
+    SearchAll,
 } from "./pages/public";
 import path from "./ultis/path";
+import bgImage from '../src/assets/eiffel.png'
 
 function App() {
     return (
         <>
-            <div
-                style={{
-                    backgroundImage: `url("https://zmp3-static.zmdcdn.me/skins/zmp3-v6.1/images/theme-background/eiffel.jpg")`,
-                    backgroundPositionX: 3,
-                }}
-            >
+            <div className="bg-[#282828] relative overflow-hidden">
+                <img src={bgImage} alt="bg" className="absolute top-0 left-0" />
                 <Routes>
                     <Route path={path.PUBLIC} element={<Public />}>
                         <Route path={path.HOME} element={<Home />} />
@@ -37,6 +37,12 @@ function App() {
                             path={path.PLAYLIST_TITTLE__CHARTID}
                             element={<WeekRank />}
                         />
+                        <Route path={path.SEARCH} element={<Search />}>
+                            <Route path={path.SONG} element={<SearchSongs />} />
+                            <Route path={path.ALL} element={<SearchAll />} />
+                            <Route path={path.START} element={<SearchAll />} />
+
+                        </Route>
 
                         <Route path={path.START} element={<Home />} />
                     </Route>
