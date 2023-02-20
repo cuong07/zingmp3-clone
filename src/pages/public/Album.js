@@ -20,8 +20,6 @@ const Album = () => {
     const { songs, isPlaying } = useSelector((state) => state.music);
     const { isLoadingPage } = useSelector((state) => state.home);
 
-    console.log(songs);
-
     useEffect(() => {
         const fetchDetailPlaylist = async () => {
             dispatch(homeSlice.actions.setIsLoadingPage(true));
@@ -115,9 +113,9 @@ const Album = () => {
                 </div>
                 <div className="flex gap-5">
                     {artists?.map((item) => (
-                        <div className="flex-1 flex flex-col gap-4">
+                        <div className="flex-1 flex flex-col gap-4 justify-center items-center">
                             <div className="rounded-full overflow-hidden">
-                                <img src={item.thumbnailM} alt="" className="hover:scale-110 duration-500 " />
+                                <img src={item.thumbnailM} alt="" className="hover:scale-110 duration-500 rounded-full" />
                             </div>
                             <span className="flex flex-col gap-1 text-center">
                                 <span className="text-[14px] text-main-text">{item.alias}</span>

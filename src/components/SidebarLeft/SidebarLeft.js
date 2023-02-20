@@ -89,7 +89,7 @@ const SidebarLeft = () => {
             </div>
             <div className="flex items-center justify-center bg-[#333] text-white py-5 fixed right-0 mb-[90px] bottom-0 left-0 gap-1">
                 <BsPlusLg />
-                <span>tạo playlist mới</span>
+                <span className="max-1200:hidden">Tạo playlist mới</span>
             </div>
         </div >
     );

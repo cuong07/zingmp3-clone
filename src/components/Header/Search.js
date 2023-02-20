@@ -16,7 +16,6 @@ const Search = () => {
 
     useEffect(() => {
         window.addEventListener('keyup', handlerSearch)
-
         return () => {
             window.removeEventListener('keyup', handlerSearch)
         }
@@ -25,11 +24,10 @@ const Search = () => {
     const handlerSearch = async (e) => {
         if (e.keyCode === 13) {
             const response = await apiSearch(keyword)
-            console.log(response);
             setKeyword('')
             dispatch(searchSlice.actions.setSearchAll(response.data.data))
             navigate({
-                pathname: '/tim-kiem',
+                pathname: '/tim-kiem/tat-ca',
             })
         }
     }

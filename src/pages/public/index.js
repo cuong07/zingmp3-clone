@@ -8,3 +8,8 @@ export { default as WeekRank } from "./WeekRank";
 export { default as Search } from "./Search";
 export { default as SearchSongs } from "./SearchSongs";
 export { default as SearchAll } from "./SearchAll";
+export { default as SearchPlaylist } from "./SearchPlaylist";
+export { default as SearchArtist } from "./SearchArtist";
+export { default as SearchVideo } from "./SearchVideo";
+export { default as ZingChart } from "./ZingChart";
+export { default as Follow } from "./Follow";
