@@ -7,8 +7,7 @@ const initialState = {
     songs: [],
     videos: [],
     searchAll: {},
-}
-
+};
 
 const searchSlice = createSlice({
     name: "search",
@@ -21,9 +20,8 @@ const searchSlice = createSlice({
             state.songs = action.payload.songs;
             state.videos = action.payload.videos;
             state.counter = action.payload.counter;
-        }
-    }
-
-})
+        },
+    },
+});
 
 export default searchSlice;

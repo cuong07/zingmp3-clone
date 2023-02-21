@@ -1,9 +1,11 @@
-import React from 'react'
+import React from "react";
 
 const ZingChart = () => {
     return (
-        <h1 className='flex items-center justify-center text-white animate-pulse h-full'>DANG UPDATE......</h1>
-    )
-}
+        <h1 className="flex items-center justify-center text-white animate-pulse h-full">
+            DANG UPDATE......
+        </h1>
+    );
+};
 
-export default ZingChart
+export default ZingChart;

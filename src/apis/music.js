@@ -41,7 +41,8 @@ export const apiGetDetailPlaylist = async (playlistId) => {
     } catch (error) {
         console.log(error.message);
     }
-}; export const apiSearch = async (keyword) => {
+};
+export const apiSearch = async (keyword) => {
     try {
         const response = await request({
             url: "/search",

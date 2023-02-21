@@ -66,7 +66,7 @@ const SidebarRight = () => {
                                 {detailSongId?.title?.length > 20
                                     ? `${detailSongId?.title?.slice(0, 20)}...`
                                     : detailSongId?.title ||
-                                    "Chưa chọn bài hát"}
+                                      "Chưa chọn bài hát"}
                             </span>
                             <span>
                                 <span className="text-xs text-[#ffffff80]"></span>
@@ -89,7 +89,7 @@ const SidebarRight = () => {
                                 {songs?.title?.length >= 30
                                     ? `${songs?.title?.slice(0, 30)}...`
                                     : songs?.title ||
-                                    "Chưa chọn Playlist nào..."}
+                                      "Chưa chọn Playlist nào..."}
                             </span>
                         </span>
                     </div>
@@ -101,7 +101,7 @@ const SidebarRight = () => {
                                 title={item.title}
                                 artist={item.artistsNames}
                                 image={item.thumbnailM}
-                                styleImage='w-10'
+                                styleImage="w-10"
                             />
                         ))}
                     </div>

@@ -15,10 +15,10 @@ import {
     SearchPlaylist,
     SearchVideo,
     ZingChart,
-    Follow
+    Follow,
 } from "./pages/public";
 import path from "./ultis/path";
-import bgImage from '../src/assets/eiffel.png'
+import bgImage from "../src/assets/eiffel.png";
 
 function App() {
     return (
@@ -47,9 +47,18 @@ function App() {
                         <Route path={path.SEARCH} element={<Search />}>
                             <Route path={path.SONG} element={<SearchSongs />} />
                             <Route path={path.ALL} element={<SearchAll />} />
-                            <Route path={path.ARTIST} element={<SearchArtist />} />
-                            <Route path={path.PLAYLIST} element={<SearchPlaylist />} />
-                            <Route path={path.VIDEO} element={<SearchVideo />} />
+                            <Route
+                                path={path.ARTIST}
+                                element={<SearchArtist />}
+                            />
+                            <Route
+                                path={path.PLAYLIST}
+                                element={<SearchPlaylist />}
+                            />
+                            <Route
+                                path={path.VIDEO}
+                                element={<SearchVideo />}
+                            />
                         </Route>
 
                         <Route path={path.START} element={<Home />} />

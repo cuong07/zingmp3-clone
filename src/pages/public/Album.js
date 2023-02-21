@@ -31,7 +31,7 @@ const Album = () => {
         };
         fetchDetailPlaylist();
     }, [playlistid]);
-    const artists = songs?.artists?.map((item) => item)
+    const artists = songs?.artists?.map((item) => item);
 
     let AlbumContent = (
         <>
@@ -39,16 +39,18 @@ const Album = () => {
                 <div className="flex-none flex w-1/5 flex-col items-center gap-2 ">
                     <div className="w-full relative">
                         <img
-                            className={`w-full object-contain rounded-md duration-500 ease-in-out delay-2000 ${isPlaying
-                                ? "animate-rotate-center rounded-full"
-                                : "animate-rotate-center-pause"
-                                }`}
+                            className={`w-full object-contain rounded-md duration-1000 ease-in-out ${
+                                isPlaying
+                                    ? "animate-rotate-center rounded-full"
+                                    : "animate-rotate-center-pause"
+                            }`}
                             src={songs?.thumbnailM}
                             alt="thumbnail"
                         />
                         <div
-                            className={`absolute left-0 top-0 w-full h-full hover:bg-overlay-30 flex items-center justify-center ${isPlaying && "rounded-full"
-                                }`}
+                            className={`absolute left-0 top-0 w-full h-full hover:bg-overlay-30 flex items-center justify-center ${
+                                isPlaying && "rounded-full"
+                            }`}
                         >
                             {isPlaying && (
                                 <span className="w-full flex justify-center">
@@ -108,18 +110,35 @@ const Album = () => {
             </div>
             <div className="px-[59px] flex gap-5 mt-12 flex-col">
                 <div className="flex justify-between">
-                    <h1 className="text-main-text capitalize font-semibold">Nghệ sĩ tham gia</h1>
+                    <h1 className="text-main-text capitalize font-semibold">
+                        Nghệ sĩ tham gia
+                    </h1>
                     <span>Tất cả</span>
                 </div>
                 <div className="flex gap-5">
                     {artists?.map((item) => (
-                        <div className="flex-1 flex flex-col gap-4 justify-center items-center">
+                        <div
+                            className="flex-1 flex flex-col gap-4 justify-center items-center"
+                            key={item.alias}
+                        >
                             <div className="rounded-full overflow-hidden">
-                                <img src={item.thumbnailM} alt="" className="hover:scale-110 duration-500 rounded-full" />
+                                <img
+                                    src={item.thumbnailM}
+                                    alt=""
+                                    className="hover:scale-110 duration-500 rounded-full"
+                                />
                             </div>
                             <span className="flex flex-col gap-1 text-center">
-                                <span className="text-[14px] text-main-text">{item.alias}</span>
-                                <span className="text-xs text-[#ffffff80]">{item.totalFollow > 1000 ? `${Math.round(item.totalFollow / 1000)}K quan tâm` : `${item.totalFollow} quan tâm`}</span>
+                                <span className="text-[14px] text-main-text">
+                                    {item.alias}
+                                </span>
+                                <span className="text-xs text-[#ffffff80]">
+                                    {item.totalFollow > 1000
+                                        ? `${Math.round(
+                                              item.totalFollow / 1000
+                                          )}K quan tâm`
+                                        : `${item.totalFollow} quan tâm`}
+                                </span>
                             </span>
                         </div>
                     ))}

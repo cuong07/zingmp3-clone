@@ -59,6 +59,7 @@ const Player = ({ setIsShowSideBarRight, isShowSideBarRight }) => {
             if (songResponse?.data.err === 0) {
                 audio.pause();
                 if (songResponse?.data?.data["128"]) {
+                    console.log(songResponse?.data?.data["128"]);
                     setAudio(new Audio(songResponse?.data?.data["128"]));
                 } else {
                     handlerNextSong();
@@ -90,8 +91,8 @@ const Player = ({ setIsShowSideBarRight, isShowSideBarRight }) => {
                     Math.round(
                         (audio.currentTime * 10000) / songInfo?.duration
                     ) / 100;
-                thumbRef.current.style.cssText = `right: ${100 - percent}%`;
                 setTimeCur(Math.round(audio.currentTime));
+                thumbRef.current.style.cssText = `right: ${100 - percent}%`
             }, 200);
             if (timeCur === duration) {
                 setTimeCur(0);
@@ -202,11 +203,10 @@ const Player = ({ setIsShowSideBarRight, isShowSideBarRight }) => {
                 <img
                     src={songInfo?.thumbnail || mp3logo}
                     alt="Chưa chọn bài hát"
-                    className={`w-16 h-16 object-cover rounded-md ${
-                        isPlaying
-                            ? "animate-rotate-center rounded-full"
-                            : "animate-rotate-center-pause"
-                    }`}
+                    className={`w-16 h-16 object-cover rounded-md ${isPlaying
+                        ? "animate-rotate-center rounded-full"
+                        : "animate-rotate-center-pause"
+                        }`}
                 />
                 <div className="flex flex-col">
                     <span className="font-semibold text-main-text text-sm">
@@ -232,9 +232,8 @@ const Player = ({ setIsShowSideBarRight, isShowSideBarRight }) => {
             <div className="w-[40%] flex-auto items-center justify-center flex flex-col gap-4 py-2 ">
                 <div className="flex gap-8 items-center justify-center">
                     <span
-                        className={` text-main-text ${
-                            songs ? "cursor-pointer" : "cursor-none"
-                        } ${isRand ? "text-blue-600" : ""}`}
+                        className={` text-main-text ${songs ? "cursor-pointer" : "cursor-none"
+                            } ${isRand ? "text-blue-600" : ""}`}
                         title="Bật phát ngẫu nhiên"
                         onClick={() => {
                             setIsRand(!isRand);
@@ -243,9 +242,8 @@ const Player = ({ setIsShowSideBarRight, isShowSideBarRight }) => {
                         <CiShuffle size={18} />
                     </span>
                     <span
-                        className={`text-main-text ${
-                            songs ? "cursor-pointer" : "cursor-none"
-                        }`}
+                        className={`text-main-text ${songs ? "cursor-pointer" : "cursor-none"
+                            }`}
                         onClick={handlerPrevSong}
                     >
                         <IoMdSkipBackward size={18} />

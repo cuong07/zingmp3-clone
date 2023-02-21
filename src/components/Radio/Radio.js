@@ -40,8 +40,8 @@ const Radio = () => {
                             <span className="text-xs text-[#ffffff80]">
                                 {item?.activeUsers > 1000
                                     ? ` ${Math.round(
-                                        item?.activeUsers / 1000
-                                    )}K đang nghe`
+                                          item?.activeUsers / 1000
+                                      )}K đang nghe`
                                     : `${item?.activeUsers} đang nghe`}
                             </span>
                         </div>

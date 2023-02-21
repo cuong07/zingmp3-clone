@@ -1,15 +1,14 @@
-import React from 'react'
-import { useSelector } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
-import { SongItem } from '../../components'
-import SectionItem from '../../components/Section/SectionItem'
+import React from "react";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { SongItem } from "../../components";
+import SectionItem from "../../components/Section/SectionItem";
 
 const SearchAll = () => {
-    const navigate = useNavigate()
-    const { searchAll } = useSelector(state => state.search)
+    const navigate = useNavigate();
+    const { searchAll } = useSelector((state) => state.search);
 
     console.log(searchAll);
-
 
     const handleClickPlaylist = (item) => {
         if (item?.subType === 1) {
@@ -18,13 +17,15 @@ const SearchAll = () => {
         }
     };
     return (
-        <div className='flex flex-col px-[59px]'>
+        <div className="flex flex-col px-[59px]">
             {/* Nổi bật */}
-            <div className='flex flex-col gap-3 mt-12'>
-                <div className='flex justify-between'>
-                    <h3 className='text-lg text-main-text uppercase font-semibold'>Nổi bật</h3>
+            <div className="flex flex-col gap-3 mt-12">
+                <div className="flex justify-between">
+                    <h3 className="text-lg text-main-text uppercase font-semibold">
+                        Nổi bật
+                    </h3>
                 </div>
-                <div className='flex flex-wrap'>
+                <div className="flex flex-wrap">
                     {searchAll?.songs?.slice(0, 3)?.map((item) => (
                         <SongItem
                             key={item.encodeId}
@@ -33,19 +34,23 @@ const SearchAll = () => {
                             title={item.title}
                             artist={item.artistsNames}
                             styleImage="w-[60px] h-[60px]"
-                            style='w-1/3 mt-2 h-auto'
-                            type='Bài hát'
+                            style="w-1/3 mt-2 h-auto"
+                            type="Bài hát"
                         />
                     ))}
                 </div>
             </div>
             {/* Bài hát */}
-            <div className='flex flex-col gap-3 mt-12'>
-                <div className='flex justify-between'>
-                    <h3 className='text-lg text-main-text uppercase'>Bài Hát</h3>
-                    <span className='text-sm text-[#ffffff80] uppercase'>tất cả</span>
+            <div className="flex flex-col gap-3 mt-12">
+                <div className="flex justify-between">
+                    <h3 className="text-lg text-main-text uppercase">
+                        Bài Hát
+                    </h3>
+                    <span className="text-sm text-[#ffffff80] uppercase">
+                        tất cả
+                    </span>
                 </div>
-                <div className='flex flex-wrap'>
+                <div className="flex flex-wrap">
                     {searchAll?.songs?.slice(0, 6)?.map((item) => (
                         <SongItem
                             key={item.encodeId}
@@ -53,8 +58,8 @@ const SearchAll = () => {
                             image={item.thumbnail}
                             title={item.title}
                             artist={item.artistsNames}
-                            styleImage='w-[60px]'
-                            style='w-1/2 mt-2'
+                            styleImage="w-[60px]"
+                            style="w-1/2 mt-2"
                         />
                     ))}
                 </div>
@@ -84,12 +89,10 @@ const SearchAll = () => {
                 </div>
             </div>
 
-            <div>
-
-            </div>
+            <div></div>
             <div></div>
         </div>
-    )
-}
+    );
+};
 
-export default SearchAll 
+export default SearchAll;

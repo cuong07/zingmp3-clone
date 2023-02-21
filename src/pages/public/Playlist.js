@@ -39,18 +39,16 @@ const Playlist = () => {
                 <div className="flex-none flex w-1/5 flex-col items-center gap-2 max-640:flex-row max-640:w-auto ">
                     <div className="w-full relative overflow-hidden">
                         <img
-                            className={`w-full object-contain rounded-md transition-all ease-in-out delay-2000 ${
-                                isPlaying
-                                    ? "animate-rotate-center rounded-full"
-                                    : "animate-rotate-center-pause"
-                            }`}
+                            className={`w-full object-contain rounded-md transition-all ease-in-out delay-2000 ${isPlaying
+                                ? "animate-rotate-center rounded-full"
+                                : "animate-rotate-center-pause"
+                                }`}
                             src={songs?.thumbnailM}
                             alt="thumbnail"
                         />
                         <div
-                            className={`absolute left-0 top-0 w-full h-full hover:bg-overlay-30 flex items-center justify-center ${
-                                isPlaying && "rounded-full"
-                            }`}
+                            className={`absolute left-0 top-0 w-full h-full hover:bg-overlay-30 flex items-center justify-center ${isPlaying && "rounded-full"
+                                }`}
                         >
                             {isPlaying && (
                                 <span className="w-full flex justify-center">

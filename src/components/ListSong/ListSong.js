@@ -1,13 +1,14 @@
 import moment from "moment";
 import React from "react";
 import { memo } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import musicSlide from "../../store/musicSlice";
 import icons from "../../ultis/icon";
 
 const { GiMusicalNotes } = icons;
 
 const ListSong = ({ curIndex, songData }) => {
+    const { curSongId } = useSelector((state) => state.music);
     const dispatch = useDispatch();
 
     const getSongIdHandler = (songId) => {
@@ -19,7 +20,9 @@ const ListSong = ({ curIndex, songData }) => {
     const durationSong = moment.utc(songData.duration * 1000).format("mm:ss");
     return (
         <div
-            className="flex justify-between items-center p-[10px] border-t-2 border-t-[#868686] hover:bg-[#595959] cursor-pointer"
+            className={`flex justify-between items-center p-[10px] border-t-2 border-t-[#868686] hover:bg-[#595959] cursor-pointer
+            ${curSongId === songData.encodeId ? "bg-[#595959]" : ""}
+                    `}
             onClick={() => getSongIdHandler(songData.encodeId)}
         >
             <div className="flex items-center gap-3 flex-1">

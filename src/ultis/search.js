@@ -19,4 +19,4 @@ export const searchMenu = [
         path: "video",
         text: "Mv",
     },
-]
+];

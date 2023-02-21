@@ -4,9 +4,18 @@ import {
     MdFeed,
 } from "react-icons/md";
 import { TbChartArcs } from "react-icons/tb";
-import { HiArrowNarrowLeft, HiArrowNarrowRight, HiUserAdd } from "react-icons/hi";
+import {
+    HiArrowNarrowLeft,
+    HiArrowNarrowRight,
+    HiUserAdd,
+} from "react-icons/hi";
 import { BiSearch, BiCategoryAlt } from "react-icons/bi";
-import { AiTwotoneSetting, AiFillHeart, AiOutlineHeart, AiOutlineStar } from "react-icons/ai";
+import {
+    AiTwotoneSetting,
+    AiFillHeart,
+    AiOutlineHeart,
+    AiOutlineStar,
+} from "react-icons/ai";
 import { CgProfile } from "react-icons/cg";
 import {
     BsThreeDots,
@@ -63,7 +72,7 @@ const icons = {
     FcDoughnutChart,
     FcSignature,
     BsPlusLg,
-    HiUserAdd
+    HiUserAdd,
 };
 
 export default icons;

@@ -8,12 +8,7 @@ import { sidebarMenu } from "../../ultis/menu";
 import { navbarItems } from "../../ultis/navbarItems";
 import icons from "../../ultis/icon";
 
-const {
-    FcMusic,
-    FcDoughnutChart,
-    FcSignature,
-    BsPlusLg
-} = icons;
+const { FcMusic, FcDoughnutChart, FcSignature, BsPlusLg } = icons;
 
 const notActiveStyle =
     "py-2 px-[25px] font-bold flex items-center gap-4 text-[#A0A0A0] text-[13px] h-[50px] ";
@@ -57,20 +52,28 @@ const SidebarLeft = () => {
                         <NavLink
                             key={item.text}
                             className={({ isActive }) =>
-                                isActive ? activeStyle : notActiveStyle}
-
+                                isActive ? activeStyle : notActiveStyle
+                            }
                         >
                             <span>{item.icon}</span>
-                            <span className="1200:flex hidden">{item.text}</span>
+                            <span className="1200:flex hidden">
+                                {item.text}
+                            </span>
                         </NavLink>
                     ))}
                 </div>
                 <div className="my-[10px] mx-[20px] bg-gradient-bg-vip rounded-lg px-2 py-[15px] text-center max-1200:hidden">
-                    <h3 className="mb-[10px] text-[12px] font-semibold text-main-text ">nghe nhạc không quảng cáo cùng kho nhạc vip</h3>
-                    <span className="px-[35px] py-[6px] bg-[#ffdb00] rounded-3xl text-sm font-semibold cursor-pointer ">nâng câp</span>
+                    <h3 className="mb-[10px] text-[12px] font-semibold text-main-text ">
+                        nghe nhạc không quảng cáo cùng kho nhạc vip
+                    </h3>
+                    <span className="px-[35px] py-[6px] bg-[#ffdb00] rounded-3xl text-sm font-semibold cursor-pointer ">
+                        nâng câp
+                    </span>
                 </div>
                 <div className="px-6 flex flex-col gap-4 mt-[10px]">
-                    <p className="text-white font-semibold max-1200:hidden">Thư viện</p>
+                    <p className="text-white font-semibold max-1200:hidden">
+                        Thư viện
+                    </p>
                     <div className="flex flex-col gap-3">
                         <span className="flex gap-2 text-[#ffffff] ">
                             <FcMusic size={24} />
@@ -91,7 +94,7 @@ const SidebarLeft = () => {
                 <BsPlusLg />
                 <span className="max-1200:hidden">Tạo playlist mới</span>
             </div>
-        </div >
+        </div>
     );
 };
 
