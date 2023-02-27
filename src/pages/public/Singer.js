@@ -91,11 +91,7 @@ const Singer = () => {
                                     item={item}
                                     key={item.encodeId}
                                     styleImage="w-10 h-10"
-<<<<<<< HEAD
                                     style="w-[49%] border-b border-[#ffffff30]"
-=======
-                                    style="w-[49%] border-b border-[#ffffff30] "
->>>>>>> dev
                                 />
                             ))}
                         </div>
