@@ -16,6 +16,8 @@ import {
     SearchVideo,
     ZingChart,
     Follow,
+    Singer,
+    SingerSongs
 } from "./pages/public";
 import path from "./ultis/path";
 import bgImage from "../src/assets/eiffel.png";
@@ -32,6 +34,10 @@ function App() {
                         <Route path={path.MY_MUSIC} element={<Personal />} />
                         <Route path={path.ZING_CHART} element={<ZingChart />} />
                         <Route path={path.FOLLOW} element={<Follow />} />
+
+                        <Route path={path.HOME_SINGER} element={<Singer />} />
+                        <Route path={path.HOME_SINGER__SONG} element={<SingerSongs />} />
+
                         <Route
                             path={path.ALBUM__TITTLE__PLAYLISTID}
                             element={<Album />}
@@ -45,18 +51,18 @@ function App() {
                             element={<WeekRank />}
                         />
                         <Route path={path.SEARCH} element={<Search />}>
-                            <Route path={path.SONG} element={<SearchSongs />} />
-                            <Route path={path.ALL} element={<SearchAll />} />
+                            <Route path={path.SEARCH_SONG} element={<SearchSongs />} />
+                            <Route path={path.SEARCH_ALL} element={<SearchAll />} />
                             <Route
-                                path={path.ARTIST}
+                                path={path.SEARCH_ARTIST}
                                 element={<SearchArtist />}
                             />
                             <Route
-                                path={path.PLAYLIST}
+                                path={path.SEARCH_PLAYLIST}
                                 element={<SearchPlaylist />}
                             />
                             <Route
-                                path={path.VIDEO}
+                                path={path.SEARCH_VIDEO}
                                 element={<SearchVideo />}
                             />
                         </Route>

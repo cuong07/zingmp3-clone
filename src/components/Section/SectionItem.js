@@ -3,21 +3,21 @@ import { useState } from "react";
 import icons from "../../ultis/icon";
 const { AiOutlineHeart, FaPlay, BsThreeDots } = icons;
 
-const SectionItem = ({ item, handleClickPlaylist }) => {
+const SectionItem = ({ item, handleClickPlaylist, styleMore }) => {
     const [isShown, setIsShown] = useState(false);
+    console.log(styleMore);
 
     return (
         <div
-            className="px-[14px] flex-1 flex flex-col gap-1 cursor-pointer "
+            className={`px-[14px] flex flex-col gap-1 cursor-pointer ${styleMore ? styleMore : "flex-1"} `}
             onClick={() => handleClickPlaylist(item)}
             onMouseEnter={() => setIsShown(true)}
             onMouseLeave={() => setIsShown(false)}
         >
             <div className="relative overflow-hidden rounded-md">
                 <div
-                    className={`absolute top-0 left-0 bottom-0 right-0 duration-500 ${
-                        isShown ? "bg-[#00000030] z-10 " : ""
-                    }`}
+                    className={`absolute top-0 left-0 bottom-0 right-0 duration-500 ${isShown ? "bg-[#00000030] z-10 " : ""
+                        }`}
                 >
                     {isShown && (
                         <span className="w-full h-full flex items-center justify-center gap-5 text-white">
@@ -28,9 +28,8 @@ const SectionItem = ({ item, handleClickPlaylist }) => {
                     )}
                 </div>
                 <img
-                    className={`rounded-md duration-500 ${
-                        isShown ? "scale-110" : ""
-                    }`}
+                    className={`rounded-md duration-500 ${isShown ? "scale-110" : ""
+                        }`}
                     src={item.thumbnailM}
                     alt="thumbnail"
                 />

@@ -10,7 +10,7 @@ const NewRelease = () => {
     const [newReleaseSongs, setNewReleaseSongs] = useState(null);
 
     let style = "w-[45%] min-[1024px]:w-[30%] mt-2 h-auto";
-    let styleImage = "w-[60px] h-[60px]";
+    let styleImage = "w-[60px] h-[60px] 1200:h-10 1200:w-10 ";
     useEffect(() => {
         switch (isActived) {
             case 0:
@@ -30,7 +30,7 @@ const NewRelease = () => {
     let buttonStyle = "border border-gray-400 py-1 px-4 rounded-2xl text-white";
 
     return (
-        <div className="p-[59px] w-full flex flex-col gap-4">
+        <div className="1200:px-[59px] w-full flex flex-col gap-4">
             <div className="flex justify-between w-full ">
                 <h3 className="capitalize text-main-text font-semibold ">
                     {newRelease?.title}
@@ -40,25 +40,22 @@ const NewRelease = () => {
             <div className="flex flex-col gap-4">
                 <div className="flex gap-3">
                     <button
-                        className={`${buttonStyle} ${
-                            +isActived === 0 ? "bg-[#9b4de0]" : ""
-                        }`}
+                        className={`${buttonStyle} ${+isActived === 0 ? "bg-[#9b4de0]" : ""
+                            }`}
                         onClick={() => setIsActived(0)}
                     >
                         All
                     </button>
                     <button
-                        className={`${buttonStyle} ${
-                            +isActived === 1 ? "bg-[#9b4de0]" : ""
-                        }`}
+                        className={`${buttonStyle} ${+isActived === 1 ? "bg-[#9b4de0]" : ""
+                            }`}
                         onClick={() => setIsActived(1)}
                     >
                         Quốc tế
                     </button>
                     <button
-                        className={`${buttonStyle} ${
-                            +isActived === 2 ? "bg-[#9b4de0]" : ""
-                        }`}
+                        className={`${buttonStyle} ${+isActived === 2 ? "bg-[#9b4de0]" : ""
+                            }`}
                         onClick={() => setIsActived(2)}
                     >
                         Việt nam

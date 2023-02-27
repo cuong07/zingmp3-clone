@@ -11,7 +11,9 @@ module.exports = {
       backgroundImage: {
         'mp3logo': 'url("https://zjs.zmdcdn.me/zmp3-desktop/releases/v1.8.25/static/media/icon_zing_mp3_60.f6b51045.svg")',
         'gradient-bg-chart': 'linear-gradient(180deg,#740091,#2d1a4c)',
-        'gradient-bg-vip': 'linear-gradient(117deg,#5a4be7,#c86dd7 102%)'
+        'gradient-bg-vip': 'linear-gradient(117deg,#5a4be7,#c86dd7 102%)',
+        'gradient-bg-artist': 'linear-gradient(to bottom, rgba(0,0,0,0),rgba(0,0,0,0.6))'
+
       },
       backgroundColor: {
         'main-100': '#E7ECEC',

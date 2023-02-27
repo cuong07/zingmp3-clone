@@ -25,3 +25,15 @@ export const getWeekRank = async (chartId) => {
         console.log(error.message);
     }
 };
+export const getArtist = async (alias) => {
+    try {
+        const response = await request({
+            url: "/artist",
+            method: "get",
+            params: { name: alias }
+        });
+        return response;
+    } catch (error) {
+        console.log(error.message);
+    }
+};

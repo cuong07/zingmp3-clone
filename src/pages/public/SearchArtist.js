@@ -1,5 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 import icons from "../../ultis/icon";
 
@@ -7,6 +8,13 @@ const { HiUserAdd } = icons;
 
 const SearchArtist = () => {
     const { artists } = useSelector((state) => state.search);
+    const navigate = useNavigate()
+
+    const handlerClickItem = (item) => {
+        navigate(item?.link)
+    }
+
+
     return (
         <div className="px-[59px] mt-12 flex flex-col ">
             <h3 className="text-main-text text-lg font-semibold mb-4">
@@ -15,7 +23,9 @@ const SearchArtist = () => {
             <div>
                 <div className="flex gap-4 flex-wrap justify-between">
                     {artists?.map((item) => (
-                        <div className="w-[20%] flex flex-col gap-2 ">
+                        <div className="w-[20%] flex flex-col gap-2 "
+                            onClick={() => handlerClickItem(item)}
+                        >
                             <div className="rounded-full overflow-hidden mb-[10px]">
                                 <img
                                     src={item.thumbnailM}
@@ -30,8 +40,8 @@ const SearchArtist = () => {
                                 <span className="text-[#ffffff80] text-sm">
                                     {item.totalFollow > 1000
                                         ? `${Math.round(
-                                              item.totalFollow / 1000
-                                          )}K quan tâm`
+                                            item.totalFollow / 1000
+                                        )}K quan tâm`
                                         : `${item.totalFollow} quan tâm`}
                                 </span>
                             </div>

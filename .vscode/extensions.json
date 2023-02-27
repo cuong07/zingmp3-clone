@@ -1,3 +1,6 @@
 {
-	"recommendations": ["danielsanmedium.dscodegpt"]
+	"recommendations": [
+		"danielsanmedium.dscodegpt",
+		"dracula-theme.theme-dracula"
+	]
 }

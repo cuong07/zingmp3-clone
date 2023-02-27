@@ -1,7 +1,7 @@
 import moment from "moment/moment";
 import React from "react";
 import { memo } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import musicSlide from "../../store/musicSlice";
 
 const SongItem = ({
@@ -22,9 +22,8 @@ const SongItem = ({
     };
     return (
         <div
-            className={`flex gap-3 hover:bg-[#3e3e3e] items-center p-2 rounded-md cursor-pointer h-auto ${
-                style ? style : ""
-            }`}
+            className={`flex gap-3 hover:bg-[#3e3e3e] items-center p-2 cursor-pointer h-auto ${style ? style : ""
+                }`}
             onClick={() => handlerClickSong()}
         >
             <img

@@ -17,9 +17,11 @@ const SearchSongs = () => {
 
     return (
         <div className="px-[49px] mt-[49px]">
+
             <h3 className="font-semibold text-lg text-main-text mb-4">
                 Bài hát
             </h3>
+
             <div className="flex flex-col w-full">
                 {songs?.map((item) => (
                     <div

@@ -22,8 +22,10 @@ const Search = () => {
 
     const handlerSearch = async (e) => {
         if (e.keyCode === 13) {
+            dispatch(searchSlice.actions.setIsLoadingSearch(true))
             const response = await apiSearch(keyword);
             setKeyword("");
+            dispatch(searchSlice.actions.setIsLoadingSearch(false))
             dispatch(searchSlice.actions.setSearchAll(response.data.data));
             navigate({
                 pathname: "/tim-kiem/tat-ca",
