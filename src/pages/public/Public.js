@@ -5,16 +5,15 @@ import { Outlet } from "react-router-dom";
 
 import "../../UI/Glassmorphism.scss";
 import { Header, Player, SidebarLeft, SidebarRight } from "../../components";
-import Scrollbars from "react-custom-scrollbars-2";
 
 const Public = (props) => {
-    const [scroll, setScroll] = useState(false);
+    // const [scroll, setScroll] = useState(false);
     const [isShowSideBarRight, setIsShowSideBarRight] = useState(true);
-    useEffect(() => {
-        window.addEventListener("scroll", () => {
-            setScroll(window.scrollY > 0);
-        });
-    }, []);
+    // useEffect(() => {
+    //     window.addEventListener("scroll", () => {
+    //         setScroll(window.scrollY > 0);
+    //     });
+    // }, []);
 
     return (
         <div className="w-full flex flex-col relative">
