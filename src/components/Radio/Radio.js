@@ -8,7 +8,7 @@ const Radio = () => {
     const radioList = radio?.items?.slice(0, 7);
 
     return (
-        <div className="px-[59px] mt-12 flex flex-col  gap-5 ">
+        <div className="1200:px-[59px] mt-12 flex flex-col  gap-5 ">
             <div className="flex justify-between ">
                 <h3 className="text-[16px] text-main-text font-semibold">
                     {radio?.title}
@@ -17,7 +17,7 @@ const Radio = () => {
             </div>
             <div className="flex justify-between">
                 {radioList?.map((item) => (
-                    <div className="flex-1 px-[14px] flex-col flex gap-2">
+                    <div className="flex-1 px-[14px] flex-col flex gap-2" key={item.encodeId}>
                         <div className="w-full relative text-center">
                             <img
                                 src={item?.host?.thumbnail}
@@ -29,19 +29,19 @@ const Radio = () => {
                                 alt="thumbnail"
                                 className="rounded-full w-1/3 absolute right-0 bottom-0"
                             />
-                            <span className="absolute -bottom-2 -translate-x-1/2 px-2 py-[2px] bg-red-600 rounded-3xl text-white">
+                            <span className="absolute -bottom-2 -translate-x-1/2 px-2 py-[2px] bg-red-600 rounded-3xl max-438:text-xs text-white">
                                 LIVE
                             </span>
                         </div>
                         <div className="text-center">
-                            <h4 className="text-center w-full text-[16px] font-semibold text-main-text ">
+                            <h4 className="text-center w-full text-[16px] font-semibold text-main-text max-438:text-xs ">
                                 {item?.host?.name}
                             </h4>
-                            <span className="text-xs text-[#ffffff80]">
+                            <span className="text-xs max-438:text-[8px] text-[#ffffff80]">
                                 {item?.activeUsers > 1000
                                     ? ` ${Math.round(
-                                          item?.activeUsers / 1000
-                                      )}K đang nghe`
+                                        item?.activeUsers / 1000
+                                    )}K đang nghe`
                                     : `${item?.activeUsers} đang nghe`}
                             </span>
                         </div>

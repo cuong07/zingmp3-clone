@@ -35,22 +35,20 @@ const Album = () => {
 
     let AlbumContent = (
         <>
-            <div className="flex w-full h-full gap-8 p-[59px]">
-                <div className="flex-none flex w-1/5 flex-col items-center gap-2 ">
-                    <div className="w-full relative">
+            <div className="flex w-full h-full max-1200:flex-col gap-8 1200:p-[59px]">
+                <div className="flex-none flex 1200:w-1/5 1200:flex-col 1200:items-center gap-2 w-3/4 max-1200:min-w-max max-438:hidden">
+                    <div className="w-full relative max-1200:flex max-1200:w-1/3 ">
                         <img
-                            className={`w-full object-contain rounded-md duration-1000 ease-in-out ${
-                                isPlaying
-                                    ? "animate-rotate-center rounded-full"
-                                    : "animate-rotate-center-pause"
-                            }`}
+                            className={`w-full object-contain rounded-md duration-1000 ease-in-out ${isPlaying
+                                ? "animate-rotate-center rounded-full"
+                                : "animate-rotate-center-pause"
+                                }`}
                             src={songs?.thumbnailM}
                             alt="thumbnail"
                         />
                         <div
-                            className={`absolute left-0 top-0 w-full h-full hover:bg-overlay-30 flex items-center justify-center ${
-                                isPlaying && "rounded-full"
-                            }`}
+                            className={`absolute left-0 top-0 w-full h-full hover:bg-overlay-30 flex items-center justify-center ${isPlaying && "rounded-full"
+                                }`}
                         >
                             {isPlaying && (
                                 <span className="w-full flex justify-center">
@@ -64,11 +62,11 @@ const Album = () => {
                             )}
                         </div>
                     </div>
-                    <div className="flex flex-col items-center justify-center">
-                        <h3 className="text-[20px] font-bold text-main-text text-center">
+                    <div className="flex flex-col 1200:items-center 1200:justify-center">
+                        <h3 className="text-[20px] font-bold text-main-text 1200:text-center">
                             {songs?.title}
                         </h3>
-                        <span className="text-[#ffffff80] text-[12px] text-center">
+                        <span className="text-[#ffffff80] text-[12px] 1200:text-center">
                             {" "}
                             Cập Nhật:
                             <span>
@@ -78,7 +76,7 @@ const Album = () => {
                                     .format("DD/MM`/YYYY")}
                             </span>
                         </span>
-                        <span className="text-center">
+                        <span className="1200:text-center">
                             {songs?.artists?.map((item) => (
                                 <span
                                     key={item.id}
@@ -94,8 +92,8 @@ const Album = () => {
                     </div>
                 </div>
                 <Scrollbars autoHide className="w-ful bg-transparent">
-                    <div className="flex-auto overflow-y-auto mb-11 ">
-                        <span>
+                    <div className="flex-auto overflow-y-auto mb-11 max-438:min-w-max ">
+                        <span className="max-1200:hidden">
                             <span className="text-[14px] text-[#696969]">
                                 Lời tựa
                             </span>
@@ -108,7 +106,7 @@ const Album = () => {
                     </div>
                 </Scrollbars>
             </div>
-            <div className="px-[59px] flex gap-5 mt-12 flex-col">
+            <div className="px-[59px] flex gap-5 mt-12 flex-col max-438:hidden">
                 <div className="flex justify-between">
                     <h1 className="text-main-text capitalize font-semibold">
                         Nghệ sĩ tham gia
@@ -135,8 +133,8 @@ const Album = () => {
                                 <span className="text-xs text-[#ffffff80]">
                                     {item.totalFollow > 1000
                                         ? `${Math.round(
-                                              item.totalFollow / 1000
-                                          )}K quan tâm`
+                                            item.totalFollow / 1000
+                                        )}K quan tâm`
                                         : `${item.totalFollow} quan tâm`}
                                 </span>
                             </span>

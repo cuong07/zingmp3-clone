@@ -10,15 +10,24 @@ import {
     Top100,
     Radio,
     ChartSection,
+    ArtistItem,
 } from "../../components";
+import { useNavigate } from "react-router-dom";
+import { Swiper, SwiperSlide } from "swiper/react";
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/pagination";
+import { Pagination, Scrollbar } from "swiper";
+// import required modules
+import "./Home.scss"
 import * as apis from "../../apis/home";
 import homeSlice from "../../store/homeSlice";
 import LoadingPage from "../../UI/LoadingPage";
-import { useNavigate } from "react-router-dom";
+import Scrollbars from "react-custom-scrollbars-2";
 
 const Home = (props) => {
     const dispatch = useDispatch();
-    const { isLoadingPage, weekRank } = useSelector((state) => state.home);
+    const { isLoadingPage, weekRank, artists } = useSelector((state) => state.home);
     const navigate = useNavigate();
     useEffect(() => {
         const fetchDataHome = async () => {
@@ -33,6 +42,7 @@ const Home = (props) => {
                 dispatch(homeSlice.actions.getRadio(response.data.data));
                 dispatch(homeSlice.actions.getWeekRank(response.data.data));
                 dispatch(homeSlice.actions.getChart(response.data.data));
+                dispatch(homeSlice.actions.getArtists(response.data.data));
             } else {
                 console.log(Error);
             }
@@ -45,8 +55,10 @@ const Home = (props) => {
         const chartPath = item?.link?.split(".")[0];
         navigate(chartPath);
     };
+
+    const artistsSeven = artists?.items?.slice(0, 7)
     return (
-        <div className="w-full">
+        <div className="w-full ">
             {isLoadingPage &&
                 ReactDOM.createPortal(
                     <LoadingPage />,
@@ -61,7 +73,18 @@ const Home = (props) => {
                     <Radio />
                     <Top100 />
                     <ChartSection />
-                    <div className="flex px-[59px] mt-12 gap-4 justify-between">
+                    <div className="flex flex-col 1200:px-[59px] mt-12 gap-4 overflow-hidden">
+                        <div className="flex justify-between">
+                            <h3 className="font-bold text-[20px] capitalize text-main-text">Nghệ sĩ</h3>
+                            <span className="uppercase text-xs text-white">tất cả</span>
+                        </div>
+                        <div className="flex gap-4">
+                            {artistsSeven?.map((item) => (
+                                <ArtistItem item={item} key={item.encodeId} />
+                            ))}
+                        </div>
+                    </div>
+                    <div className="flex px-[59px] mt-12 gap-4 justify-between max-438:hidden">
                         {weekRank?.items?.map((item, index) => (
                             <img
                                 key={index}

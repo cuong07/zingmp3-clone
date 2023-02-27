@@ -1,4 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
+import artistSlice from "./artistSlice";
 
 import homeSlice from "./homeSlice";
 import musicSlide from "./musicSlice";
@@ -8,6 +9,7 @@ const store = configureStore({
         music: musicSlide.reducer,
         home: homeSlice.reducer,
         search: searchSlice.reducer,
+        artist: artistSlice.reducer
     },
 });
 
