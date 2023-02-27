@@ -62,7 +62,7 @@ const ChartSection = () => {
     }, [chart]);
     let styleImage = "w-[60px] h-[60px]";
     return (
-        <div className="px-[59px] mt-12 relative max-h-[430px] rounded-md overflow-hidden">
+        <div className="1200:px-[59px] mt-12 relative max-h-[430px] rounded-md overflow-hidden max-1200:hidden">
             <img
                 src={bgChart}
                 alt="bg-chart"

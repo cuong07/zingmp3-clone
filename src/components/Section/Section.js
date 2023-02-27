@@ -19,7 +19,7 @@ const Section = () => {
 
     let songsPlaylist = playlist?.items?.slice(0, 5);
     return (
-        <div className="mt-12 px-[59px] flex flex-col gap-5">
+        <div className="mt-12 1200:px-[59px] flex flex-col gap-5">
             <div className="flex items-center justify-between ">
                 <h3 className="text-5 font-bold text-main-text capitalize ">
                     {playlist.title}

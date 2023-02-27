@@ -13,3 +13,5 @@ export { default as SearchArtist } from "./SearchArtist";
 export { default as SearchVideo } from "./SearchVideo";
 export { default as ZingChart } from "./ZingChart";
 export { default as Follow } from "./Follow";
+export { default as Singer } from "./Singer"
+export { default as SingerSongs } from "./SingerSongs"

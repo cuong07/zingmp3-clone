@@ -13,3 +13,5 @@ export { default as Top100 } from "./Top100/Top100";
 export { default as SongItem } from "./SongItem/SongItem";
 export { default as Radio } from "./Radio/Radio";
 export { default as ChartSection } from "./ChartSection/ChartSection";
+export { default as SongLyric } from "./SongLyric/SongLyric"
+export { default as ArtistItem } from "./Artist/ArtistItem";

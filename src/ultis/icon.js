@@ -2,6 +2,8 @@ import {
     MdOutlineLibraryMusic,
     MdOutlineMultilineChart,
     MdFeed,
+    MdKeyboardArrowDown,
+    MdFilterList
 } from "react-icons/md";
 import { TbChartArcs } from "react-icons/tb";
 import {
@@ -73,6 +75,8 @@ const icons = {
     FcSignature,
     BsPlusLg,
     HiUserAdd,
+    MdFilterList,
+    MdKeyboardArrowDown
 };
 
 export default icons;

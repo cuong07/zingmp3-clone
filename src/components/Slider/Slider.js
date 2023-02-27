@@ -84,16 +84,15 @@ const Slider = () => {
     };
 
     return (
-        <div className="w-full overflow-hidden px-[59px]">
+        <div className="w-full overflow-hidden 1200:px-[59px]">
             <div className="flex w-full gap-8 pt-8">
                 {banner?.map((item, index) => (
                     <img
                         key={item.encodeId}
                         src={item.banner}
                         onClick={() => handleClickBanner(item)}
-                        className={`slider-item flex-1 object-contain w-[30%] rounded-lg ${
-                            index <= 2 ? "block" : "hidden"
-                        }`}
+                        className={`slider-item flex-1 object-contain w-[30%] max-438:w-[45%] rounded-lg ${index <= 2 ? "block" : "hidden"
+                            }`}
                         alt="banner"
                     />
                 ))}

@@ -28,6 +28,22 @@ export const apiGetDetailSong = async (songId) => {
         console.log(error.message);
     }
 };
+
+export const apiGetLyric = async (songId) => {
+    try {
+        const response = await request({
+            url: "/lyric",
+            method: "get",
+            params: {
+                id: songId,
+            },
+        });
+        return response;
+    } catch (error) {
+        console.log(error.message);
+    }
+};
+
 export const apiGetDetailPlaylist = async (playlistId) => {
     try {
         const response = await request({

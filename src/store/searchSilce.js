@@ -7,6 +7,7 @@ const initialState = {
     songs: [],
     videos: [],
     searchAll: {},
+    isLoadingSearch: false
 };
 
 const searchSlice = createSlice({
@@ -21,6 +22,9 @@ const searchSlice = createSlice({
             state.videos = action.payload.videos;
             state.counter = action.payload.counter;
         },
+        setIsLoadingSearch: (state, action) => {
+            state.isLoadingSearch = action.payload;
+        }
     },
 });
 

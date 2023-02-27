@@ -7,6 +7,7 @@ const initialState = {
     atAlbum: false,
     songs: null,
     isLoadingSong: false,
+    songLyric: null,
 };
 const musicSlide = createSlice({
     name: "music",
@@ -30,6 +31,9 @@ const musicSlide = createSlice({
         getDetailSongId: (state, aciton) => {
             state.detailSongId = aciton.payload;
         },
+        setSongLyric: (state, aciton) => {
+            state.songLyric = aciton.payload;
+        }
     },
 });
 

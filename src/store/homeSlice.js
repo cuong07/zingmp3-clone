@@ -13,6 +13,7 @@ const homeSlice = createSlice({
         weekRank: [],
         chart: {},
         rank: [],
+        artists: [],
     },
     reducers: {
         getBanner: (state, action) => {
@@ -61,6 +62,11 @@ const homeSlice = createSlice({
                 (item) => item?.sectionId === "hZC"
             ).items;
         },
+        getArtists: (state, action) => {
+            state.artists = action.payload?.items?.find(
+                (item) => item?.sectionType === "artistSpotlight" || null
+            );
+        }
     },
 });
 

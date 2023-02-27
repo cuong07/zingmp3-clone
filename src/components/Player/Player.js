@@ -1,5 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+
+
 import * as apis from "../../apis";
 import musicSlide from "../../store/musicSlice";
 import icons from "../../ultis/icon";
@@ -8,6 +10,7 @@ import moment from "moment";
 import { toast } from "react-toast";
 import Loading from "../../../src/UI/Loading";
 import "./InputSlider.scss";
+import { Lyric, SongLyric } from "../../components"
 
 const {
     AiFillHeart,
@@ -26,8 +29,8 @@ const {
     BsMusicNoteList,
 } = icons;
 
-var intervalId;
-var volume;
+let intervalId;
+let volume;
 
 const Player = ({ setIsShowSideBarRight, isShowSideBarRight }) => {
     const { curSongId, isPlaying, isLoadingSong, songs } = useSelector(
@@ -59,7 +62,6 @@ const Player = ({ setIsShowSideBarRight, isShowSideBarRight }) => {
             if (songResponse?.data.err === 0) {
                 audio.pause();
                 if (songResponse?.data?.data["128"]) {
-                    console.log(songResponse?.data?.data["128"]);
                     setAudio(new Audio(songResponse?.data?.data["128"]));
                 } else {
                     handlerNextSong();
@@ -73,14 +75,15 @@ const Player = ({ setIsShowSideBarRight, isShowSideBarRight }) => {
                 );
                 setSongInfo(detailResponse?.data.data);
                 setDuration(detailResponse?.data?.data?.duration);
-            } else {
+            }
+            else {
                 setAudio(new Audio());
                 dispatch(musicSlide.actions.setIsPlaying(false));
                 toast.warn(songResponse?.data?.msg);
             }
         };
         fetchData();
-    }, [curSongId]);
+    }, [curSongId, dispatch]);
 
     useEffect(() => {
         intervalId && clearInterval(intervalId);
@@ -208,7 +211,7 @@ const Player = ({ setIsShowSideBarRight, isShowSideBarRight }) => {
                         : "animate-rotate-center-pause"
                         }`}
                 />
-                <div className="flex flex-col">
+                <div className="flex flex-col max-1200:hidden">
                     <span className="font-semibold text-main-text text-sm">
                         {songInfo?.title || "Chưa chọn bài nào"}
                     </span>
@@ -216,7 +219,7 @@ const Player = ({ setIsShowSideBarRight, isShowSideBarRight }) => {
                         {songInfo?.artistsNames}
                     </span>
                 </div>
-                <div className="flex gap-4 pl-2">
+                <div className="flex gap-4 pl-2 max-1200:hidden">
                     <span
                         onClick={handlerToggleLike}
                         className="cursor-pointer text-main-text"
@@ -294,7 +297,7 @@ const Player = ({ setIsShowSideBarRight, isShowSideBarRight }) => {
                 </div>
             </div>
             <div className="w-[30%] flex-auto text-white flex justify-center gap-5 items-center">
-                <span className="flex gap-5">
+                <span className="flex gap-5 max-1200:hidden">
                     <BsMic size={20} />
                     <FaRegWindowRestore size={20} />
                 </span>
@@ -323,6 +326,7 @@ const Player = ({ setIsShowSideBarRight, isShowSideBarRight }) => {
                     <BsMusicNoteList size={20} />
                 </span>
             </div>
+            <SongLyric audio={audio} />
         </div>
     );
 };
