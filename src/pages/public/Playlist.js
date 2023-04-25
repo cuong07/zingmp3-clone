@@ -30,6 +30,7 @@ const Playlist = () => {
         };
         dispatch(homeSlice.actions.setIsLoadingPage(false));
         fetchDetailPlaylist();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [playlistid]);
     let responseDate = moment(songs?.contentLastUpdate).format("DD/MM/YYYY");
 
