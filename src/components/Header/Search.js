@@ -18,6 +18,7 @@ const Search = () => {
         return () => {
             window.removeEventListener("keyup", handlerSearch);
         };
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [keyword]);
 
     const handlerSearch = async (e) => {

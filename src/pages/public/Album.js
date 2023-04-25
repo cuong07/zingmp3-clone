@@ -107,8 +107,8 @@ const Album = () => {
                 </Scrollbars>
             </div>
             <div className="px-[59px] flex gap-5 mt-12 flex-col max-438:hidden">
-                <div className="flex justify-between">
-                    <h1 className="text-main-text capitalize font-semibold">
+                <div className="flex justify-between text-main-text">
+                    <h1 className=" capitalize font-semibold">
                         Nghệ sĩ tham gia
                     </h1>
                     <span>Tất cả</span>
@@ -116,7 +116,7 @@ const Album = () => {
                 <div className="flex gap-5">
                     {artists?.map((item) => (
                         <div
-                            className="flex-1 flex flex-col gap-4 justify-center items-center"
+                            className="w-1/5 flex flex-col gap-4 justify-center items-center"
                             key={item.alias}
                         >
                             <div className="rounded-full overflow-hidden">

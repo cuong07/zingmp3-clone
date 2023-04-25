@@ -5,8 +5,6 @@ const { AiOutlineHeart, FaPlay, BsThreeDots } = icons;
 
 const SectionItem = ({ item, handleClickPlaylist, styleMore }) => {
     const [isShown, setIsShown] = useState(false);
-    console.log(styleMore);
-
     return (
         <div
             className={`px-[14px] flex flex-col gap-1 cursor-pointer ${styleMore ? styleMore : "flex-1"} `}

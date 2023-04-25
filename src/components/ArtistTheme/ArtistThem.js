@@ -6,6 +6,7 @@ import SectionItem from "../Section/SectionItem";
 
 const ArtistThem = () => {
     const artistTheme = useSelector((state) => state.home.artistTheme);
+    console.log(artistTheme);
 
     const navigate = useNavigate();
 
@@ -14,7 +15,6 @@ const ArtistThem = () => {
         navigate(albumPath);
     };
 
-    let artist = artistTheme?.items?.slice(0, 5);
     return (
         <div className="mt-12 1200:px-[59px] flex flex-col gap-5">
             <div className="flex items-center justify-between ">
@@ -29,7 +29,7 @@ const ArtistThem = () => {
                 </span>
             </div>
             <div className="flex justify-between ">
-                {artist?.map((item) => (
+                {artistTheme?.item?.map((item) => (
                     <SectionItem
                         key={item.encodeId}
                         item={item}

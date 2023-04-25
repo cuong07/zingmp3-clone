@@ -9,14 +9,14 @@ const ArtistItem = ({ item }) => {
     }
 
     return (
-        <div className="flex flex-col glass2 rounded-xl overflow-hidden cursor-pointer max-1200:w-[80px] "
+        <div className="flex flex-col rounded-xl overflow-hidden cursor-pointer w-full bg-[#313131]"
             onClick={handlerClickItem}
         >
             <div className="mb-[10px]">
                 <img
                     src={item.thumbnail}
                     alt="thumbnailM"
-                    className="hover:scale-110 duration-500"
+                    className="hover:scale-105 duration-500 w-full"
                 />
             </div>
             <div className="flex flex-col text-center mb-2">

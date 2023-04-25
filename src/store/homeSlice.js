@@ -26,7 +26,7 @@ const homeSlice = createSlice({
         },
         getPlaylist: (state, action) => {
             state.playlist = action.payload.items.find(
-                (item) => item?.sectionId === "hAutoTheme1" || null
+                (item) => item?.sectionId === "hAlbum" || null
             );
         },
         getNewRelease: (state, action) => {
@@ -64,7 +64,7 @@ const homeSlice = createSlice({
         },
         getArtists: (state, action) => {
             state.artists = action.payload?.items?.find(
-                (item) => item?.sectionType === "artistSpotlight" || null
+                (item) => item?.sectionId === "hArtistTheme" || null
             );
         }
     },

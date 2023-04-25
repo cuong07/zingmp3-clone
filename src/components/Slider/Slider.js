@@ -91,7 +91,7 @@ const Slider = () => {
                         key={item.encodeId}
                         src={item.banner}
                         onClick={() => handleClickBanner(item)}
-                        className={`slider-item flex-1 object-contain w-[30%] max-438:w-[45%] rounded-lg ${index <= 2 ? "block" : "hidden"
+                        className={`slider-item flex-1 object-contain 640:w-[30%] w-3/4 rounded-lg ${index <= 2 ? "block" : "hidden"
                             }`}
                         alt="banner"
                     />

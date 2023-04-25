@@ -10,7 +10,7 @@ import moment from "moment";
 import { toast } from "react-toast";
 import Loading from "../../../src/UI/Loading";
 import "./InputSlider.scss";
-import { Lyric, SongLyric } from "../../components"
+import { SongLyric } from "../../components"
 
 const {
     AiFillHeart,
@@ -83,6 +83,7 @@ const Player = ({ setIsShowSideBarRight, isShowSideBarRight }) => {
             }
         };
         fetchData();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [curSongId, dispatch]);
 
     useEffect(() => {
@@ -101,6 +102,7 @@ const Player = ({ setIsShowSideBarRight, isShowSideBarRight }) => {
                 setTimeCur(0);
             }
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [audio, isPlaying]);
 
     const play = async () => {
@@ -110,6 +112,7 @@ const Player = ({ setIsShowSideBarRight, isShowSideBarRight }) => {
     useEffect(() => {
         audio.load();
         if (isPlaying) play();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [audio]);
 
     const handlerTogglePlayMusic = () => {
@@ -202,7 +205,7 @@ const Player = ({ setIsShowSideBarRight, isShowSideBarRight }) => {
 
     return (
         <div className="bg-main-player px-5 h-full flex">
-            <div className="w-[30%] flex-auto flex items-center gap-3 ">
+            <div className="640:w-[30%] w-1/5 flex-auto flex items-center gap-3 ">
                 <img
                     src={songInfo?.thumbnail || mp3logo}
                     alt="Chưa chọn bài hát"
@@ -232,8 +235,9 @@ const Player = ({ setIsShowSideBarRight, isShowSideBarRight }) => {
                     </span>
                 </div>
             </div>
+            {/* Controll */}
             <div className="w-[40%] flex-auto items-center justify-center flex flex-col gap-4 py-2 ">
-                <div className="flex gap-8 items-center justify-center">
+                <div className="flex 640:gap-8 gap-3 items-center justify-center">
                     <span
                         className={` text-main-text ${songs ? "cursor-pointer" : "cursor-none"
                             } ${isRand ? "text-blue-600" : ""}`}
@@ -252,14 +256,14 @@ const Player = ({ setIsShowSideBarRight, isShowSideBarRight }) => {
                         <IoMdSkipBackward size={18} />
                     </span>
                     <span
-                        className="cursor-pointer p-[6px] border border-gray-700 hover:text-main-500 rounded-full text-main-text"
+                        className="cursor-pointer 640:p-[6px] p-1 border border-gray-700 hover:text-main-500 rounded-full text-main-text"
                         onClick={handlerTogglePlayMusic}
                     >
                         {isLoadingSong && <Loading />}
                         {!isLoadingSong && (
                             <span>
-                                {!isPlaying && <FaPlay size={26} />}
-                                {isPlaying && <FaPause size={26} />}
+                                {!isPlaying && <FaPlay className="640:text-[26px] text-[18px]" />}
+                                {isPlaying && <FaPause className="640:text-[26px] text-[18px]" />}
                             </span>
                         )}
                     </span>
@@ -268,13 +272,13 @@ const Player = ({ setIsShowSideBarRight, isShowSideBarRight }) => {
                         className="cursor-pointer text-main-text"
                         onClick={handlerNextSong}
                     >
-                        <IoMdSkipForward size={18} />
+                        <IoMdSkipForward className="640:text-[22px] text-[18px]" />
                     </span>
                     <span
                         className="cursor-pointer text-main-text"
                         title="Bật phát lại tất cả"
                     >
-                        <CiRepeat size={18} />
+                        <CiRepeat className="640:text-[22px] text-[18px]" />
                     </span>
                 </div>
                 <div className="w-full flex justify-center items-center gap-3 text-xs ">
@@ -296,7 +300,8 @@ const Player = ({ setIsShowSideBarRight, isShowSideBarRight }) => {
                     </span>
                 </div>
             </div>
-            <div className="w-[30%] flex-auto text-white flex justify-center gap-5 items-center">
+            {/* volume */}
+            <div className="640:w-[30%] w-1/5 flex-auto text-white flex justify-center gap-5 items-center">
                 <span className="flex gap-5 max-1200:hidden">
                     <BsMic size={20} />
                     <FaRegWindowRestore size={20} />
@@ -315,7 +320,7 @@ const Player = ({ setIsShowSideBarRight, isShowSideBarRight }) => {
                         step="1"
                         max="100"
                         min="0"
-                        className="bg-[#ccc] slider"
+                        className="bg-[#ccc] slider max-640:hidden"
                         onChange={handlerChangeVolume}
                     />
                 </span>

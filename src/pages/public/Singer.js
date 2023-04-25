@@ -38,6 +38,7 @@ const Singer = () => {
             setArtist(response?.data?.data)
         }
         fetchArtist()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [singer])
     useEffect(() => {
         setArtistSongsNew(artistSongs?.items?.slice(0, 6))
@@ -91,7 +92,7 @@ const Singer = () => {
                                     item={item}
                                     key={item.encodeId}
                                     styleImage="w-10 h-10"
-                                    style="w-[49%] border-b border-[#ffffff30]"
+                                    styles="w-[49%] border-b border-[#ffffff30]"
                                 />
                             ))}
                         </div>

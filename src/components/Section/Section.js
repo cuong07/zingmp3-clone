@@ -1,16 +1,15 @@
 import React from "react";
-import { memo } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 import SectionItem from "./SectionItem";
 
 const Section = () => {
-    const playlist = useSelector((state) => state.home.playlist);
-
+    const { playlist } = useSelector((state) => state.home);
     const navigate = useNavigate();
 
     const handleClickPlaylist = (item) => {
+        console.log(item);
         if (item?.subType === 1) {
             const albumPath = item?.link?.split(".")[0];
             navigate(albumPath);
@@ -22,7 +21,7 @@ const Section = () => {
         <div className="mt-12 1200:px-[59px] flex flex-col gap-5">
             <div className="flex items-center justify-between ">
                 <h3 className="text-5 font-bold text-main-text capitalize ">
-                    {playlist.title}
+                    {playlist?.title}
                 </h3>
                 <span
                     className="text-xs uppercase text-main-text cursor-pointer"
@@ -44,4 +43,4 @@ const Section = () => {
     );
 };
 
-export default memo(Section);
+export default Section;

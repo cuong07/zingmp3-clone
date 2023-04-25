@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import ReactDOM from "react-dom";
 import { useDispatch, useSelector } from "react-redux";
-
 import {
     NewRelease,
     Section,
@@ -13,17 +12,11 @@ import {
     ArtistItem,
 } from "../../components";
 import { useNavigate } from "react-router-dom";
-import { Swiper, SwiperSlide } from "swiper/react";
-// Import Swiper styles
-import "swiper/css";
 import "swiper/css/pagination";
-import { Pagination, Scrollbar } from "swiper";
-// import required modules
 import "./Home.scss"
 import * as apis from "../../apis/home";
 import homeSlice from "../../store/homeSlice";
 import LoadingPage from "../../UI/LoadingPage";
-import Scrollbars from "react-custom-scrollbars-2";
 
 const Home = (props) => {
     const dispatch = useDispatch();
@@ -33,6 +26,7 @@ const Home = (props) => {
         const fetchDataHome = async () => {
             dispatch(homeSlice.actions.setIsLoadingPage(true));
             const response = await apis.getHome();
+            console.log(response);
             if (response) {
                 dispatch(homeSlice.actions.getBanner(response.data.data));
                 dispatch(homeSlice.actions.getPlaylist(response.data.data));
@@ -49,7 +43,7 @@ const Home = (props) => {
             dispatch(homeSlice.actions.setIsLoadingPage(false));
         };
         fetchDataHome();
-    }, []);
+    }, [dispatch]);
 
     const handlerClickItem = (item) => {
         const chartPath = item?.link?.split(".")[0];
@@ -80,7 +74,7 @@ const Home = (props) => {
                         </div>
                         <div className="flex gap-4">
                             {artistsSeven?.map((item) => (
-                                <ArtistItem item={item} key={item.encodeId} />
+                                <ArtistItem item={item.artists[0]} key={item.encodeId} />
                             ))}
                         </div>
                     </div>

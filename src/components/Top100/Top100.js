@@ -28,7 +28,7 @@ const Top100 = () => {
                     Tất cả
                 </span>
             </div>
-            <div className="flex justify-between ">
+            <div className="flex justify-between w-full 640:overflow-auto ">
                 {topSongs?.map((item) => (
                     <SectionItem
                         key={item.encodeId}

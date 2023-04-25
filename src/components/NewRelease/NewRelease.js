@@ -10,7 +10,7 @@ const NewRelease = () => {
     const [newReleaseSongs, setNewReleaseSongs] = useState(null);
 
     let style = "w-[45%] min-[1024px]:w-[30%] mt-2 h-auto";
-    let styleImage = "w-[60px] h-[60px] 1200:h-10 1200:w-10 ";
+    let styleImage = "640:w-[60px] 640:h-[60px] w-20 h-20 ";
     useEffect(() => {
         switch (isActived) {
             case 0:
@@ -25,6 +25,7 @@ const NewRelease = () => {
             default:
                 break;
         }
+        // eslint-disable-next-line no-undef, react-hooks/exhaustive-deps
     }, [isActived]);
 
     let buttonStyle = "border border-gray-400 py-1 px-4 rounded-2xl text-white";
@@ -61,7 +62,7 @@ const NewRelease = () => {
                         Việt nam
                     </button>
                 </div>
-                <div className="flex flex-wrap items-center justify-between">
+                <div className="flex 640:flex-wrap items-center justify-between  ">
                     {newReleaseSongs?.map((item) => (
                         <SongItem
                             key={item.encodeId}
